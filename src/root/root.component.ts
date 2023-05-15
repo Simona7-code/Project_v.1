@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AjaxResponse } from 'rxjs/ajax';
 //componenti figli
 import { RicercaComponent } from './ricerca/ricerca.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
 //servizi
-//import { CallServer } from './call_server.service';
+import { FromReqBinService } from './call_server.service';
 //classi
+import { Book } from './book';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css'],
   imports: [ CommonModule, RicercaComponent, InserisciComponent ],
- // providers: [CallServer],
+  providers: [FromReqBinService],
   standalone: true
 })
 export class RootComponent implements OnInit {
