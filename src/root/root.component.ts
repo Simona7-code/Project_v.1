@@ -5,6 +5,7 @@ import { RicercaComponent } from './ricerca/ricerca.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
 //servizi
 import { FromReqBinService } from './call_server.service';
+//import { ArchiveServ } from './archive.service';
 //classi
 import { Book } from './book';
 
@@ -14,7 +15,7 @@ import { Book } from './book';
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css'],
   imports: [ CommonModule, RicercaComponent, InserisciComponent ],
-  providers: [FromReqBinService],
+  providers: [FromReqBinService, /*ArchiveServ*/],
   standalone: true
 })
 export class RootComponent implements OnInit {
@@ -32,7 +33,10 @@ export class RootComponent implements OnInit {
     
   }
 
-  constructor() { }
+  constructor(
+    /*private archivioService: ArchiveServ,
+    private dbService: FromReqBinService*/)
+     { }
 
   ngOnInit() {
   }
