@@ -3,8 +3,11 @@
     {{ title }}
   </h3>
 
-  <button class="Home_button" (click)="eseguiRicerca()">Esegui Ricerca</button>
-  <app-ricerca *ngIf="mostraCampo"></app-ricerca>
+  <button class="Home_button" (click)="eseguiRicerca()"*ngIf="mostraRicerca">Esegui Ricerca</button>
+  <!--<app-ricerca *ngIf="mostraCampo"></app-ricerca>-->
 
-  <button class="Home_button"(click)="eseguiInserimento()">Inserisci nuovo testo</button>
+  <input *ngIf="mostraInserimento==false" type="text" id="campo" [(ngModel)]="valoreCampo" name="campo" >
+<!--(input)="archiveInstance.cerca()"--->
+  <button class="Home_button"(click)="eseguiInserimento()" *ngIf="mostraInserimento">Inserisci nuovo testo</button>
+
 </div>

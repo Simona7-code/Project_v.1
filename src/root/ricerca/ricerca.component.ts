@@ -9,14 +9,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
 //ricercaEseguita si popola qui e tramite la chiamata di esegui ricerca nel nodo root, qui si esegue la funzione e viene restituito e popolato il valore di ricercaEseguita, che sarà il valore che sarà passato come output nella chiamata della root
 export class RicercaComponent {
 
-  valoreCampo: string;
+  //valoreCampo: string = '';
 
-
-
-  /*@Output() ricercaEseguita: EventEmitter<void> = new EventEmitter<void>();
+  @Output() ricercaEseguita: EventEmitter<void> = new EventEmitter<void>();
 
   eseguiRicerca() {
     // Logica per eseguire la ricerca
     this.ricercaEseguita.emit(); // Emesso l'evento "ricercaEseguita"
-  }*/
+  }
 }

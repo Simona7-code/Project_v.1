@@ -1,12 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Book } from './book'; // Importa la classe Libro dal file libro.ts
+import { Book } from './book';
 
+export class Archive {
 
-@Injectable({
-  providedIn: 'root'
-})
-
-export class ArchiveServ {
   
   private archivio: Book[] = []; // Inizializza l'array archivio come un array di oggetti Libro
 
@@ -18,6 +13,7 @@ export class ArchiveServ {
   }*/
 
   cerca(titolo: string) {
+    //console.log('Nuovo valore inserito:', this.valoreCampo);
     if (!titolo) {
       return "In attesa di un titolo...";
     } else {
