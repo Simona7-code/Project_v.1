@@ -7,6 +7,7 @@ import { Component, Output, EventEmitter} from '@angular/core';
   standalone: true
 })
 export class InserisciComponent {
+
   @Output() inserimentoEseguito: EventEmitter<void> = new EventEmitter<void>();
 
   eseguiInserimento() {

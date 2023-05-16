@@ -10,13 +10,4 @@ export class Book {
     this.autore=aut;
     this.nominativo= client;
   }
-
-  /*Book_Obj(): any {
-    return {
-      titolo: this.titolo,
-      posizione: this.posizione,
-      autore: this.autore,
-      nominativo: this.nominativo
-    };
-  }*/
 }

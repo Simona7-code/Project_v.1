@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Libro } from './libro'; // Importa la classe Libro dal file libro.ts
+import { Book } from './book'; // Importa la classe Libro dal file libro.ts
 
 
 @Injectable({
@@ -8,14 +8,14 @@ import { Libro } from './libro'; // Importa la classe Libro dal file libro.ts
 
 export class ArchiveServ {
   
-  private archivio: Libro[] = []; // Inizializza l'array archivio come un array di oggetti Libro
+  private archivio: Book[] = []; // Inizializza l'array archivio come un array di oggetti Libro
 
   constructor() {}
 
-  add(tit: string, aut: string) {
-    const newDoc = new Libro(tit, aut); // Crea un nuovo oggetto Libro
+  /*add(tit: string, aut: string) {
+    const newDoc = new Book(tit, aut); // Crea un nuovo oggetto Libro
     this.archivio.push(newDoc); // Aggiunge l'oggetto Libro all'array archivio
-  }
+  }*/
 
   cerca(titolo: string) {
     if (!titolo) {

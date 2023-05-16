@@ -5,7 +5,7 @@ import { RicercaComponent } from './ricerca/ricerca.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
 //servizi
 import { FromReqBinService } from './call_server.service';
-//import { ArchiveServ } from './archive.service';
+import { ArchiveServ } from './archive.service';
 //classi
 import { Book } from './book';
 
@@ -18,12 +18,18 @@ import { Book } from './book';
   providers: [FromReqBinService, /*ArchiveServ*/],
   standalone: true
 })
+
 export class RootComponent implements OnInit {
+
   title: string = 'Gestore di Biblioteca';
+
+  mostraCampo : boolean = false;
 
   //prenderà valore di ricercaEseguita (ricerca.component.ts)
   eseguiRicerca() {
-    console.log("Ricerca eseguita nel componente root.");
+
+    this.mostraCampo = true;
+    //console.log("Ricerca eseguita nel componente root.");
     // Altre azioni da eseguire quando viene eseguita la ricerca
   }
 
