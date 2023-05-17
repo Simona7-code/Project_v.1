@@ -1,26 +1,13 @@
 import { Book } from './book';
 
 export class Archive {
-  libri: Book[];
+  archivio: Book[];
 
   constructor(libri: Book[]) {
-    this.libri = libri;
+    this.archivio = libri;
   }
-}
 
-/*export class Archive {
-
-  
-  private archivio: Book[] = []; // Inizializza l'array archivio come un array di oggetti Libro
-
-  constructor() {}
-
-  /*add(tit: string, aut: string) {
-    const newDoc = new Book(tit, aut); // Crea un nuovo oggetto Libro
-    this.archivio.push(newDoc); // Aggiunge l'oggetto Libro all'array archivio
-  }*/
-
-  /*cerca(titolo: string) {
+  cerca(titolo: string) {
     //console.log('Nuovo valore inserito:', this.valoreCampo);
     if (!titolo) {
       return "In attesa di un titolo...";
@@ -46,4 +33,12 @@ export class Archive {
       }
     }
   }
-}*/
+}
+
+
+
+  /*add(tit: string, aut: string) {
+    const newDoc = new Book(tit, aut); // Crea un nuovo oggetto Libro
+    this.archivio.push(newDoc); // Aggiunge l'oggetto Libro all'array archivio
+  }*/
+

@@ -25,6 +25,7 @@ export class RicercaComponent {
   constructor(private servizio: FromReqBinService) {}
 
   archivio: Archive; // Dichiarazione della variabile archivio
+  risultatoRicerca: string = '';
 
   search() {
 
@@ -38,13 +39,12 @@ export class RicercaComponent {
 
     this.servizio.getArch().subscribe({
       next: archivio => {
-        this.archivio = archivio; 
+        this.archivio = archivio;
         // Qui puoi accedere al contenuto dell'archivio
         console.log(archivio);
-        console.log(newinput)
-
-
-
+        console.log(newinput);
+        console.log(this.archivio.cerca(newinput));  
+        this.risultatoRicerca = this.archivio.cerca(newinput); // Assegna il valore di ritorno a una variabile
       },
       error: error => {
         // Qui puoi gestire gli errori
