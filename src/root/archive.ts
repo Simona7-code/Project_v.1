@@ -17,10 +17,16 @@ export class Archive {
       for (let libro of this.archivio) {
         let titoloCorrente = libro.titolo;
         let autoreCorrente = libro.autore;
+        let posizioneCorrente=libro.posizione;
+        let nominativoCorrente=libro.nominativo;
+
         let bothCorrente = autoreCorrente.concat(" ", titoloCorrente);
 
         if (bothCorrente.toLowerCase().includes(titolo.toLowerCase())) {
-          libriTrovati.push(libro.titolo + ", Scritto da " + libro.autore);
+          libriTrovati.push("Titolo: " + titoloCorrente +
+          "Autore: " + autoreCorrente + 
+          "Posizione: " + posizioneCorrente + 
+          "Nominativo: " + nominativoCorrente);
         }
       }
 

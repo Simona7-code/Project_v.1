@@ -1,4 +1,5 @@
 export class Book {
+  
   titolo:string;
   posizione: string;
   autore: string; 

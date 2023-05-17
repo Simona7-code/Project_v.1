@@ -13,7 +13,7 @@ import { Archive } from '../archive'
   imports: [ CommonModule, FormsModule, ReactiveFormsModule,NgIf ],
   standalone: true
 })
-//ricercaEseguita si popola qui e tramite la chiamata di esegui ricerca nel nodo root, qui si esegue la funzione e viene restituito e popolato il valore di ricercaEseguita, che sarà il valore che sarà passato come output nella chiamata della root
+
 
 export class RicercaComponent {
 
@@ -29,22 +29,19 @@ export class RicercaComponent {
 
   search() {
 
-    //console.log(this.archivio)
     //input prende il contenuto preso dall input
     var input: HTMLInputElement = document.getElementById("input_ricerca") as HTMLInputElement;
     //newname prende il valore del campo di input
     var newinput = input.value;
-    // Logica per gestire il cambiamento del valore di input
-    console.log(newinput);
+    //console.log(newinput);
 
     this.servizio.getArch().subscribe({
       next: archivio => {
         this.archivio = archivio;
         // Qui puoi accedere al contenuto dell'archivio
-        console.log(archivio);
-        console.log(newinput);
-        console.log(this.archivio.cerca(newinput));  
-        this.risultatoRicerca = this.archivio.cerca(newinput); // Assegna il valore di ritorno a una variabile
+        const risultato = this.archivio.cerca(newinput);
+        //Array.isArray(risultato) ? risultato.join(', ') : risultato per verificare se risultato è un array. Se è un array, lo uniamo in una singola stringa utilizzando il separatore , ; altrimenti, assegniamo il valore direttamente a risultatoRicerca.
+        this.risultatoRicerca = Array.isArray(risultato) ? risultato.join(', ') : risultato;
       },
       error: error => {
         // Qui puoi gestire gli errori
@@ -52,5 +49,8 @@ export class RicercaComponent {
       }
     });
     
+  }
+  clean() {
+    this.mostraRicerca = false;
   }
 }
