@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //componenti figli
 import { RicercaComponent } from './ricerca/ricerca.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
@@ -14,44 +14,34 @@ import { Archive } from './archive'
   selector: 'app-root',
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css'],
-  imports: [ CommonModule, RicercaComponent, InserisciComponent, FormsModule ],
+  imports: [ CommonModule, RicercaComponent, InserisciComponent, FormsModule,ReactiveFormsModule ],
   providers: [FromReqBinService],
   standalone: true
 })
 
 export class RootComponent implements OnInit {
 
-  //istanza archivio
-  //archiveInstance: Archive = new Archive();
   //titolo generale del documento 
   title: string = 'Gestore di Biblioteca';
- // console.log(this.servizio.getArch());
 
   //bool per regolare la comparsa/scomparsa form di input
-  mostraInserimento: boolean= true;
-  mostraRicerca: boolean= true;
+  mostraRicerca: boolean = false;
 
-  //valore del campo ricerca 
-  valoreCampo: string;
+  mostraInserimento: boolean= false;
+
 
   //prenderà valore di ricercaEseguita (ricerca.component.ts)
-  eseguiRicerca() {
-
-    this.mostraInserimento=false;
-  
-    console.log("Ricerca eseguita nel componente root.");
+  formRicerca() {
+    this.mostraRicerca=true;
     // Altre azioni da eseguire quando viene eseguita la ricerca
   }
 
+
   
   eseguiInserimento() {
-    this.mostraRicerca=false;
-    console.log("Inserimento eseguito nel componente root.");
-    
+    this.mostraInserimento=true;
   }
-
-  constructor(private servizio: FromReqBinService){}
-
+  constructor(){}
   ngOnInit() {}
 
 }

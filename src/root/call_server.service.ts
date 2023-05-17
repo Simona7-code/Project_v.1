@@ -16,7 +16,7 @@ export class FromReqBinService {
 
   constructor() {}
 
-  public getArch(): Observable<any> {
+  public getArch(): Observable<Archive> {
 
     return ajax({
       method: 'GET',
