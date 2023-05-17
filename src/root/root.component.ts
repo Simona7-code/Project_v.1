@@ -22,9 +22,10 @@ import { Archive } from './archive'
 export class RootComponent implements OnInit {
 
   //istanza archivio
-  archiveInstance: Archive = new Archive();
+  //archiveInstance: Archive = new Archive();
   //titolo generale del documento 
   title: string = 'Gestore di Biblioteca';
+ // console.log(this.servizio.getArch());
 
   //bool per regolare la comparsa/scomparsa form di input
   mostraInserimento: boolean= true;
@@ -49,13 +50,9 @@ export class RootComponent implements OnInit {
     
   }
 
-  constructor(
-    /*private archivioService: ArchiveServ,
-    private dbService: FromReqBinService*/)
-     { }
+  constructor(private servizio: FromReqBinService){}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
 
