@@ -2,7 +2,7 @@
   background-color: beige;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10%;
   position: relative;
 }
 
@@ -13,11 +13,6 @@
   border-radius: 10px;
   font-size: 14px;
   margin-bottom: 20px;
-}
-
-.input-field:focus {
-  outline: none;
-  border-color: #007bff;
 }
 
 .style_bottoni {
@@ -32,8 +27,7 @@
   border-radius: 5px;
   cursor: pointer;
   border: rgb(110, 62, 20);
-  margin-top: 10px; /* Aggiunge spazio verso l'alto di 10px */
-  margin-bottom: 10px; /* Aggiunge spazio verso il basso di 10px */
+
 }
 
 .style_home_button:hover {
@@ -43,4 +37,19 @@
 
 .style_home_button:focus {
   outline: none;
+}
+
+.style_home_button.indietro{
+  float: right;
+}
+
+.style_home_button.submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.style_home_button.submit:enabled {
+  background-color: rgb(110, 62, 20);
+  color: beige;
+  /* Altri stili per il pulsante abilitato */
 }

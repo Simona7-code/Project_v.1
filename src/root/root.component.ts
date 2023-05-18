@@ -44,7 +44,7 @@ export class RootComponent implements OnInit {
   closeInserisci() {
     this.mostraInserimento = false;
   }
-  
+
   constructor(){}
   ngOnInit() {}
 

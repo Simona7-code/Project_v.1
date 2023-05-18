@@ -2,7 +2,11 @@
   background-color: beige;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10%;
+  position: relative;
+}
+.container.risultato{
+  white-space: pre-line;
 }
 
 .input-field {
@@ -11,6 +15,7 @@
   border: none;
   border-radius: 10px;
   font-size: 14px;
+  margin-bottom: 15px;
 }
 
 .input-field:focus {
@@ -35,3 +40,8 @@
 .style_home_button:focus {
   outline: none;
 }
+
+.style_home_button.indietro{
+  float: right;
+}
+
