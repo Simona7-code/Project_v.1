@@ -3,10 +3,10 @@
     {{ title }}
   </h3>
 
-  <button class="Home_button" (click)="formRicerca()">Esegui Ricerca</button>
+  <button class="Home_button" (click)="formRicerca()" *ngIf="!mostraInserimento">Esegui Ricerca</button>
   <app-ricerca [mostraRicerca]="mostraRicerca" (closeSearchEvent)="closeSearch()"></app-ricerca>
 
-  <button class="Home_button"(click)="formInserimento()">Inserisci nuovo testo</button>
-  <app-inserisci [mostraInserimento]="mostraInserimento" (closeInserisciEvent)="closeInserisci()"></app-inserisci>
+  <button class="Home_button"(click)="formInserimento()" *ngIf="!mostraRicerca">Inserisci nuovo testo</button>
+  <app-inserisci [mostraInserimento]="mostraInserimento" (closeInserisciEvent)= "closeInserisci()"></app-inserisci>
 
 </div>
