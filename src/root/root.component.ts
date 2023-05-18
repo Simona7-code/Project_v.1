@@ -6,9 +6,7 @@ import { RicercaComponent } from './ricerca/ricerca.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
 //servizi
 import { FromReqBinService } from './call_server.service';
-//classi
-import { Book } from './book';
-import { Archive } from './archive'
+
 
 @Component({
   selector: 'app-root',
@@ -42,7 +40,6 @@ export class RootComponent implements OnInit {
   closeSearch() {
     this.mostraRicerca = false;
   }
-
 
   constructor(){}
   ngOnInit() {}
