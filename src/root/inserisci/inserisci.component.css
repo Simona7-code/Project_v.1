@@ -3,6 +3,7 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
+  position: relative;
 }
 
 .input-field {
@@ -25,6 +26,21 @@
 }
 
 .style_home_button {
-  margin-bottom: 20px; 
-  float: right;
+  padding: 10px 20px;
+  background-color: rgb(236, 226, 218);
+  color: rgb(110, 62, 20);
+  border-radius: 5px;
+  cursor: pointer;
+  border: rgb(110, 62, 20);
+  margin-top: 10px; /* Aggiunge spazio verso l'alto di 10px */
+  margin-bottom: 10px; /* Aggiunge spazio verso il basso di 10px */
+}
+
+.style_home_button:hover {
+  background-color: rgb(110, 62, 20);
+  color: beige;
+}
+
+.style_home_button:focus {
+  outline: none;
 }

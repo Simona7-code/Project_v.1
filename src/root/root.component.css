@@ -10,6 +10,7 @@ h3{
 }
 
 .Home_button {
+  margin-top: 10px; /* Aggiunge spazio verso l'alto di 10px */
   padding: 10px 20px;
   background-color: beige;
   color: rgb(110, 62, 20);
