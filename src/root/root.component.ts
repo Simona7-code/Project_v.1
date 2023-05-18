@@ -39,6 +39,11 @@ export class RootComponent implements OnInit {
     this.mostraInserimento=true;
   }
 
+  closeSearch() {
+    this.mostraRicerca = false;
+  }
+
+
   constructor(){}
   ngOnInit() {}
 

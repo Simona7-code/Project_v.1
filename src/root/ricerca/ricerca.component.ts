@@ -20,6 +20,8 @@ export class RicercaComponent {
   @Input() mostraRicerca: boolean;
   //raccoglie in automatico l'evento che si trova in input htlm del proprio component
   @Output() newInputEvent= new EventEmitter<string>();
+  @Output() closeSearchEvent = new EventEmitter();
+
   
   ngOnInit() {}
   constructor(private servizio: FromReqBinService) {}
@@ -33,24 +35,44 @@ export class RicercaComponent {
     var input: HTMLInputElement = document.getElementById("input_ricerca") as HTMLInputElement;
     //newname prende il valore del campo di input
     var newinput = input.value;
-    //console.log(newinput);
 
-    this.servizio.getArch().subscribe({
-      next: archivio => {
-        this.archivio = archivio;
-        // Qui puoi accedere al contenuto dell'archivio
-        const risultato = this.archivio.cerca(newinput);
-        //Array.isArray(risultato) ? risultato.join(', ') : risultato per verificare se risultato è un array. Se è un array, lo uniamo in una singola stringa utilizzando il separatore , ; altrimenti, assegniamo il valore direttamente a risultatoRicerca.
-        this.risultatoRicerca = Array.isArray(risultato) ? risultato.join(', ') : risultato;
-      },
-      error: error => {
-        // Qui puoi gestire gli errori
-        console.error('Errore durante la richiesta:', error);
-      }
-    });
-    
+    if (!newinput) {
+      this.risultatoRicerca="In attesa di un input...";
+    }
+
+    else {
+      //console.log(newinput);
+
+      this.servizio.getArch().subscribe({
+        next: archivio => {
+          this.archivio = archivio;
+          const risultato = this.archivio.cerca(newinput);
+   
+          if (risultato.length === 0) {
+            this.risultatoRicerca= "Non ci sono libri corrispondenti alla ricerca";} 
+
+          else if (risultato.length === 1) {
+            let libro_match = risultato.map(item => {
+              return `Autore: ${item.autore},\nTitolo: ${item.titolo},\nPosizione: ${item.posizione},\nNominativo: ${item.nominativo}`;})
+
+            this.risultatoRicerca = libro_match[0];
+          }
+
+          else if (risultato.length > 1) {
+            this.risultatoRicerca= "Ci sono " + risultato.length + " corrispondenze all'interno dell'archivio";
+          }
+        },
+        error: error => {
+          // Qui puoi gestire gli errori
+          console.error('Errore durante la richiesta:', error);
+        }
+      });
+    }
   }
   clean() {
     this.mostraRicerca = false;
+    this.risultatoRicerca = '';
+    this.closeSearchEvent.emit();
   }
+
 }

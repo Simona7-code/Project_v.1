@@ -1,8 +1,8 @@
-<div *ngIf="mostraRicerca">
+<div class="container" *ngIf="mostraRicerca">
   <p> Inserisci un titolo o un autore da ricercare:</p>
-  <input type="text" id="input_ricerca" (input)="search()" > 
-  <div id="risultato">{{ risultatoRicerca }}</div>
+  <input type="text" id="input_ricerca" (input)="search()" placeholder="Inserisci titolo o autore" class=input-field> 
+  <div id="risultato" class="container">{{ risultatoRicerca }} </div>
   
-  <button (click)="clean()">Chiudi</button>
+  <button (click)="clean()">Home</button>
 </div>
 
