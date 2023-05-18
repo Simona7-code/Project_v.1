@@ -22,17 +22,20 @@ export class Archive {
     return libriTrovati;
   }
   
-  //effettua un controllo case insensitive
+  //effettua un controllo case insensitive e restituisce vero se è contenuto, falso altrimenti
   contieneLibro(book: Book): boolean {
+
     return this.archivio.some(item => 
       item.titolo.toLowerCase() === book.titolo.toLowerCase() 
     && item.autore.toLowerCase() === book.autore.toLowerCase() 
     && item.posizione.toLowerCase() === book.posizione.toLowerCase() 
     );
   }
+
+  aggiungiLibro(book: Book) {
+    this.archivio.push(book)
+  }
+  
 }
-  /*add(tit: string, aut: string) {
-    const newDoc = new Book(tit, aut); // Crea un nuovo oggetto Libro
-    this.archivio.push(newDoc); // Aggiunge l'oggetto Libro all'array archivio
-  }*/
+ 
 

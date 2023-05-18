@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { ajax, AjaxResponse } from 'rxjs/ajax';
-
+import { ajax, AjaxResponse,AjaxError } from 'rxjs/ajax';;
 import { Archive } from './archive'
 
 @Injectable({
@@ -34,9 +33,10 @@ export class FromReqBinService {
   }
 
 //INPUT ARCH-------------------------------------------------------
-  public postArch(arch: Archive): Observable<AjaxResponse<any>> {
-
+  public postArch(arch: Archive): Observable<string> {
     const formattedArch = JSON.stringify(arch);
+    console.log(formattedArch)
+    
     return ajax({
       method: 'POST',
       url: this.apiUrl + 'post?key=' + this.apiKey,
@@ -45,6 +45,12 @@ export class FromReqBinService {
       headers: {
         'Content-Type': 'application/json'
       }
-    });
+    }).pipe(
+      map(() => 'Sovrascrittura avvenuta con successo'),
+      catchError((error: AjaxError) => {
+        return throwError('Errore durante la sovrascrittura dei dati: ' + error.message);
+      })
+    );
   }
+
 }

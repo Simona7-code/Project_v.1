@@ -47,6 +47,7 @@ export class RicercaComponent {
         next: archivio => {
           this.archivio = archivio;
           const risultato = this.archivio.cerca(newinput);
+          console.log(risultato)
    
           if (risultato.length === 0) {
             this.risultatoRicerca= "Non ci sono libri corrispondenti alla ricerca";} 

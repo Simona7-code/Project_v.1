@@ -14,6 +14,8 @@ import { Book } from '../book';
   imports: [ CommonModule, FormsModule, ReactiveFormsModule, NgIf ],
   standalone: true
 })
+
+
 export class InserisciComponent {
 
   @Input() mostraInserimento: boolean;
@@ -41,7 +43,7 @@ export class InserisciComponent {
       if (Object.prototype.hasOwnProperty.call(this.book, key)) {
         let cleanedString = this.book[key]
           .replace(/\s{2,}/g, ' ') // Rimuove gli spazi multipli consecutivi
-          .replace(/[^a-zA-Z0-9À-ÿ\s]/g, ''); // Rimuove caratteri non alfanumerici ma lascia caratteri accentati
+          .replace(/[^a-zA-Z0-9À-ÿ\s']/g, ''); // Rimuove caratteri non alfanumerici ma lascia caratteri accentati
     
           this.book[key] = cleanedString.trim(); // Rimuove spazi all'inizio e alla fine della stringa
       }
@@ -58,10 +60,23 @@ export class InserisciComponent {
 
         let contiene = this.archivio.contieneLibro(this.book)
         console.log(contiene)
+
         if (!contiene){
-          
+          this.archivio.aggiungiLibro(this.book)
+                 
+          this.servizio.postArch(this.archivio).subscribe(
+            successMessage => {
+              console.log(successMessage);
+              // Gestisci il successo della sovrascrittura
+            },
+            errorMessage => {
+              console.error(errorMessage);
+              // Gestisci l'errore nella sovrascrittura
+            }
+          );
+         
         }
-      
+        //console.log(this.archivio)
         
         
       },
