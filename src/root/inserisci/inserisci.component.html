@@ -1,32 +1,27 @@
-<div *ngIf="mostraInserimento">
+<div class="container" *ngIf="mostraInserimento">
 
   <p> Inserisci i dati del nuovo testo:</p>
   <form (ngSubmit)="formInserimento()" #myForm="ngForm">
     <div>
       <label for="titolo">Titolo:</label>
-      <input type="text" id="titolo" name="titolo" [(ngModel)]="book.titolo" required>
+      <input class="input-field" type="text" id="titolo" name="titolo" [(ngModel)]="book.titolo" required>
     </div>
   
     <div>
       <label for="autore">Autore:</label>
-      <input type="text" id="autore" name="autore" [(ngModel)]="book.autore" required>
+      <input class="input-field" type="text" id="autore" name="autore" [(ngModel)]="book.autore" required>
     </div>
   
     <div>
       <label for="posizione">Posizione:</label>
-      <input type="text" id="posizione" name="posizione" [(ngModel)]="book.posizione" required>
+      <input class="input-field" type="text" id="posizione" name="posizione" [(ngModel)]="book.posizione" required>
     </div>
   
     <div>
-      <label for="nominativo">Nominativo:</label>
-      <input type="text" id="nominativo" name="nominativo" [(ngModel)]="book.nominativo" required>
-    </div>
-  
-    <div>
-      <button type="submit" [disabled]="!myForm.form.valid">Invia</button>
+      <button class="style_bottoni" type="submit" [disabled]="!myForm.form.valid">Invia</button>
     </div>
   </form>
   
   
-  <!--<button (click)="clean()">Chiudi</button>-->
+  <button class="style_home_button" (click)="clean()">Home</button>
 </div>

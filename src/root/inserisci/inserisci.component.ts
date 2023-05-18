@@ -18,6 +18,7 @@ export class InserisciComponent {
 
   @Input() mostraInserimento: boolean;
   @Output() inserimentoEseguito: EventEmitter<void> = new EventEmitter<void>();
+  @Output() closeInserisciEvent = new EventEmitter();
    
   ngOnInit() {}
   constructor(private servizio: FromReqBinService) {}
@@ -28,9 +29,18 @@ export class InserisciComponent {
 
   formInserimento() {
      // Logica per gestire l'invio del modulo
+    let titolo = this.book.titolo
+    let posizione = this.book.posizione
+    let autore = this.book.autore
 
-     console.log(this.book);
+     console.log(titolo,posizione,autore);
     // Logica per eseguire la ricerca
-    this.inserimentoEseguito.emit(); // Emesso l'evento "ricercaEseguita"
+    
+  }
+
+  clean() {
+    this.mostraInserimento = false;
+    this.book = new Book('', '', '', ''); // Reimposta un nuovo oggetto Book con valori vuoti
+    this.closeInserisciEvent.emit();
   }
 }

@@ -41,6 +41,10 @@ export class RootComponent implements OnInit {
     this.mostraRicerca = false;
   }
 
+  closeInserisci() {
+    this.mostraInserimento = false;
+  }
+  
   constructor(){}
   ngOnInit() {}
 

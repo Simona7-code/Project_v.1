@@ -1,0 +1,30 @@
+.container {
+  background-color: beige;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.input-field {
+  width: 70%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.style_bottoni {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.style_home_button {
+  margin-bottom: 20px; 
+  float: right;
+}

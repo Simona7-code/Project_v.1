@@ -17,3 +17,9 @@
   outline: none;
   border-color: #007bff;
 }
+
+
+.style_home_button {
+  margin-bottom: 20px; /* Aggiungi 20px di spazio in basso */
+  float: right;
+}
