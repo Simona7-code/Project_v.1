@@ -4,9 +4,13 @@
   </h3>
 
   <button id="bottone_per_ricerca" class="Home_button" (click)="formRicerca()" *ngIf="!mostraRicerca && !mostraInserimento">Esegui Ricerca</button>
+
+   <!--Passo al component figlio (ricerca) la variabile mostraRicerca e l'evento closeSearchEvent legato al bottone indietro e al metodo del root closeSearch()-->
   <app-ricerca [mostraRicerca]="mostraRicerca" (closeSearchEvent)="closeSearch()"></app-ricerca>
 
   <button id="bottone_per_inserimento" class="Home_button"(click)="formInserimento()" *ngIf="!mostraRicerca && !mostraInserimento">Inserisci nuovo libro in archivio</button>
+
+   <!--Passo al component figlio (inserimento) la variabile mostraInserimento e l'evento closeInserisciEvent legato al bottone indietro e al metodo del root closeInserisci()-->
   <app-inserisci [mostraInserimento]="mostraInserimento" (closeInserisciEvent)= "closeInserisci()"></app-inserisci>
 
 </div>
