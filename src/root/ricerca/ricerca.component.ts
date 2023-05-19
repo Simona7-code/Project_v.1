@@ -56,8 +56,8 @@ export class RicercaComponent {
 
             let libro_match = risultato.map(item => {
               // Verifica se il nominativo è una stringa vuota
-              let nominativoString = item.nominativo !== '' ? `, Nominativo: ${item.nominativo}` : '';
-              return `Autore: ${item.autore},\nTitolo: ${item.titolo},\nPosizione: ${item.posizione}\n${nominativoString}`;
+              let nominativoString = item.nominativo !== '' ? `Nominativo: ${item.nominativo}` : '';
+              return `Autore: ${item.autore}\nTitolo: ${item.titolo}\nPosizione: ${item.posizione}\n${nominativoString}`;
             });
             this.risultatoRicerca = libro_match[0];
           }
