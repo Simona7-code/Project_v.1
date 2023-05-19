@@ -38,55 +38,53 @@ export class InserisciComponent {
         let cleanedString = this.book[key]
           .replace(/\s{2,}/g, ' ') // Rimuove gli spazi multipli consecutivi
           .replace(/[^a-zA-Z0-9À-ÿ\s']/g, ''); // Rimuove caratteri non alfanumerici ma lascia caratteri accentati
-    
-          this.book[key] = cleanedString.trim(); // Rimuove spazi all'inizio e alla fine della stringa
+  
+        this.book[key] = cleanedString.trim(); // Rimuove spazi all'inizio e alla fine della stringa
       }
     }
     //console.log(this.book);
-
+  
     //in questo observable gestisco nella next cosa fare se il recupero archivio funziona e nell'error cosa succede se fallisce
     this.servizio.getArch().subscribe({
-
+  
       next: archivio => {
+  
         this.archivio = archivio;
-
-        console.log(this.archivio)
-
-        let contiene = this.archivio.contieneLibro(this.book)
-        console.log(contiene)
-
-        if (!contiene){
-          this.archivio.aggiungiLibro(this.book)
-          
-          //questo observable gestisce tutto con 
-          this.servizio.postArch(this.archivio).subscribe(
-            successMessage => {
+        console.log(this.archivio);
+        let contiene = this.archivio.contieneLibro(this.book);
+        console.log(contiene);
+  
+        if (!contiene) {
+          this.archivio.aggiungiLibro(this.book);
+  
+          // observable per caricare l'archivio sul server remoto
+          this.servizio.postArch(this.archivio).subscribe({
+  
+            next: successMessage => {
               console.log(successMessage);
               // Gestisci il successo della sovrascrittura
               this.successMessage = 'Sovrascrittura avvenuta con successo';
               this.errorMessage = null;
             },
-            errorMessage => {
+            error: errorMessage => {
               console.error(errorMessage);
               // Gestisci l'errore nella sovrascrittura
               this.successMessage = null;
               this.errorMessage = 'Errore durante la sovrascrittura dei dati: ' + errorMessage;
             }
-          );
-        
+          });
         }
         //console.log(this.archivio)
       },
-
       //fallimento nell'observable del recupero archivio
       error: error => {
         // Qui puoi gestire gli errori
         console.error('Errore durante la richiesta:', error);
       }
-    });
-    
+    }); 
   }
-
+  
+  //Chiude l'inserimento e risetta tutto all'origine
   clean() {
 
     this.successMessage=null;
