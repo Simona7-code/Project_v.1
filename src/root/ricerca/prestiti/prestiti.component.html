@@ -1,0 +1,18 @@
+<div *ngIf="One_result  && !Prestato">
+  <button id="Prendi_prestito" >Prendi in prestito</button>
+  <button id="Prendi_prestito" >Cancella libro dall'archivio</button>
+
+<!--<input type="text" id="input_ricerca" (input)="search()" placeholder="Inserisci titolo o autore" class=input-field> -->
+
+<!--<div id="risultato" class="container risultato">{{ risultatoRicerca }} </div>-->
+
+</div>
+
+<div *ngIf="One_result && Prestato">
+<button id="lascia_prestito" >Restituisci il libro</button>
+
+<!--<input type="text" id="input_ricerca" (input)="search()" placeholder="Inserisci titolo o autore" class=input-field> -->
+
+<!--<div id="risultato" class="container risultato">{{ risultatoRicerca }} </div>-->
+
+</div>

@@ -5,6 +5,9 @@
   <input type="text" id="input_ricerca" (input)="search()" placeholder="Inserisci titolo o autore" class=input-field> 
 
   <div id="risultato" class="container risultato">{{ risultatoRicerca }} </div>
+
+  <app-prestiti [One_result]="One_result" [Prestato]="Prestato"></app-prestiti>
+
   
   <button class="style_home_button indietro" (click)="clean()">Indietro</button>
   
