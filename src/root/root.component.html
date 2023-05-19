@@ -3,10 +3,10 @@
     {{ title }}
   </h3>
 
-  <button class="Home_button" (click)="formRicerca()" *ngIf="!mostraInserimento">Esegui Ricerca</button>
+  <button id="bottone_per_ricerca" class="Home_button" (click)="formRicerca()" *ngIf="!mostraRicerca && !mostraInserimento">Esegui Ricerca</button>
   <app-ricerca [mostraRicerca]="mostraRicerca" (closeSearchEvent)="closeSearch()"></app-ricerca>
 
-  <button class="Home_button"(click)="formInserimento()" *ngIf="!mostraRicerca">Inserisci nuovo libro in archivio</button>
+  <button id="bottone_per_inserimento" class="Home_button"(click)="formInserimento()" *ngIf="!mostraRicerca && !mostraInserimento">Inserisci nuovo libro in archivio</button>
   <app-inserisci [mostraInserimento]="mostraInserimento" (closeInserisciEvent)= "closeInserisci()"></app-inserisci>
 
 </div>

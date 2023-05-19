@@ -29,12 +29,13 @@
   color: rgb(110, 62, 20);
   border-radius: 5px;
   border: rgb(110, 62, 20);
-  margin-top: 10px; /* Aggiunge spazio verso l'alto di 10px */
-  margin-bottom: 10px; /* Aggiunge spazio verso il basso di 10px */
+  margin-top: 1%; /* Aggiunge spazio verso l'alto di 10px */
+  margin-bottom: 10%; /* Aggiunge spazio verso il basso di 10px */
 }
 .style_home_button:hover {
   background-color: rgb(110, 62, 20);
   color: beige;
+  margin-bottom: 10%;
 }
 
 .style_home_button:focus {

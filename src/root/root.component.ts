@@ -29,12 +29,11 @@ export class RootComponent implements OnInit {
 
   //prenderà valore di ricercaEseguita (ricerca.component.ts)
   formRicerca() {
-    this.mostraRicerca=true;
-    // Altre azioni da eseguire quando viene eseguita la ricerca
+    this.mostraRicerca = true;
   }
 
   formInserimento() {
-    this.mostraInserimento=true;
+    this.mostraInserimento = true;
   }
 
   closeSearch() {
