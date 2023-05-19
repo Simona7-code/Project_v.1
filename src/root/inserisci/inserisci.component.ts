@@ -30,6 +30,8 @@ export class InserisciComponent {
   public successMessage: string;
   public errorMessage: string;
 
+
+  //metodo per inserire nuovo libro nell'archivio (ricarica archivio con nuovo libro )
   formInserimento() {
 
     // Logica per eseguire la ricerca
@@ -38,7 +40,6 @@ export class InserisciComponent {
         let cleanedString = this.book[key]
           .replace(/\s{2,}/g, ' ') // Rimuove gli spazi multipli consecutivi
           .replace(/[^a-zA-Z0-9À-ÿ\s']/g, ''); // Rimuove caratteri non alfanumerici ma lascia caratteri accentati
-  
         this.book[key] = cleanedString.trim(); // Rimuove spazi all'inizio e alla fine della stringa
       }
     }
@@ -74,7 +75,6 @@ export class InserisciComponent {
             }
           });
         }
-        //console.log(this.archivio)
       },
       //fallimento nell'observable del recupero archivio
       error: error => {
