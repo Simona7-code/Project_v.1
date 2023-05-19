@@ -1,6 +1,7 @@
 <div class="container" *ngIf="mostraInserimento">
 
   <p> Inserisci i dati del nuovo testo:</p>
+
   <form (ngSubmit)="formInserimento()" #myForm="ngForm">
     <div>
       <label for="titolo">Titolo:</label>
@@ -21,7 +22,16 @@
       <button class="style_home_button submit" type="submit" [disabled]="!myForm.form.valid">Invia</button>
     </div>
   </form>
-  
-  
+
+  <!-- Messaggio di successo -->
+  <div *ngIf="successMessage" class="container successMsg">
+    {{ successMessage }}
+  </div>
+
+  <!-- Messaggio di errore -->
+  <div *ngIf="errorMessage" class="container errorMsg">
+    {{ errorMessage }}
+  </div>
+
   <button class="style_home_button indietro" (click)="clean()">Indietro</button>
 </div>

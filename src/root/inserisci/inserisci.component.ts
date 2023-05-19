@@ -27,16 +27,10 @@ export class InserisciComponent {
 
   archivio: Archive; // Dichiarazione della variabile archivio
   book: Book = new Book('', '', '', '');
-  //risultatoRicerca: string = '';
+  public successMessage: string;
+  public errorMessage: string;
 
   formInserimento() {
-
-     // Logica per gestire l'invio del modulo
-    let titolo = this.book.titolo
-    let posizione = this.book.posizione
-    let autore = this.book.autore
-    console.log(titolo,posizione,autore);
-
 
     // Logica per eseguire la ricerca
     for (const key in this.book) {
@@ -48,11 +42,11 @@ export class InserisciComponent {
           this.book[key] = cleanedString.trim(); // Rimuove spazi all'inizio e alla fine della stringa
       }
     }
+    //console.log(this.book);
 
-    console.log(this.book);
-
-
+    //in questo observable gestisco nella next cosa fare se il recupero archivio funziona e nell'error cosa succede se fallisce
     this.servizio.getArch().subscribe({
+
       next: archivio => {
         this.archivio = archivio;
 
@@ -63,23 +57,28 @@ export class InserisciComponent {
 
         if (!contiene){
           this.archivio.aggiungiLibro(this.book)
-                 
+          
+          //questo observable gestisce tutto con 
           this.servizio.postArch(this.archivio).subscribe(
             successMessage => {
               console.log(successMessage);
               // Gestisci il successo della sovrascrittura
+              this.successMessage = 'Sovrascrittura avvenuta con successo';
+              this.errorMessage = null;
             },
             errorMessage => {
               console.error(errorMessage);
               // Gestisci l'errore nella sovrascrittura
+              this.successMessage = null;
+              this.errorMessage = 'Errore durante la sovrascrittura dei dati: ' + errorMessage;
             }
           );
-         
+        
         }
         //console.log(this.archivio)
-        
-        
       },
+
+      //fallimento nell'observable del recupero archivio
       error: error => {
         // Qui puoi gestire gli errori
         console.error('Errore durante la richiesta:', error);
@@ -89,6 +88,9 @@ export class InserisciComponent {
   }
 
   clean() {
+
+    this.successMessage=null;
+    this.errorMessage=null;
     this.mostraInserimento = false;
     this.book = new Book('', '', '', ''); // Reimposta un nuovo oggetto Book con valori vuoti
     this.closeInserisciEvent.emit();

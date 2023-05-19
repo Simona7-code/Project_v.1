@@ -6,6 +6,16 @@
   position: relative;
 }
 
+.container.successMsg{
+  background-color: rgb(62, 190, 62);
+
+}
+
+.container.errorMsg{
+  background-color: rgb(222, 99, 99);
+
+}
+
 .input-field {
   width: 70%;
   padding: 10px;
