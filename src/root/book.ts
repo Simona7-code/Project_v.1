@@ -1,14 +1,14 @@
 export class Book {
   
+  autore: string; 
   titolo:string;
   posizione: string;
-  autore: string; 
   nominativo: string;
 
-  constructor( tit:string, loc: string, aut: string, client: string) {
+  constructor(  aut: string, tit:string, loc: string, client: string) {
+    this.autore=aut;
     this.titolo=tit;
     this.posizione=loc;
-    this.autore=aut;
     this.nominativo= client;
   }
 }

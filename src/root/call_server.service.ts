@@ -34,12 +34,13 @@ export class FromReqBinService {
 
 //INPUT ARCH-------------------------------------------------------
   public postArch(arch: Archive): Observable<string> {
-    const formattedArch = JSON.stringify(arch);
+
+    const formattedArch = JSON.stringify(arch.archivio);
     console.log(formattedArch)
     
     return ajax({
       method: 'POST',
-      url: this.apiUrl + 'post?key=' + this.apiKey,
+      url: this.apiUrl + 'set?key=' + this.apiKey,
       crossDomain: true,
       body: formattedArch,
       headers: {
@@ -48,7 +49,7 @@ export class FromReqBinService {
     }).pipe(
       map(() => 'Sovrascrittura avvenuta con successo'),
       catchError((error: AjaxError) => {
-        return throwError('Errore durante la sovrascrittura dei dati: ' + error.message);
+        return throwError(() => new Error('Errore durante la sovrascrittura dei dati: ' + error.message));
       })
     );
   }
