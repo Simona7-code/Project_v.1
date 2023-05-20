@@ -1,7 +1,8 @@
 <div *ngIf="One_result  && !Prestato">
   
-  <button class="style_home_button" id="Prendi_prestito" >Prendi in prestito</button>
-  <button class="style_home_button" id="Prendi_prestito" >Cancella libro dall'archivio</button>
+  <button class="style_home_button" id="Prendi_prestito">Prendi in prestito</button>
+  <!--(click)="apri_input()" -->
+  <button class="style_home_button" id="Prendi_prestito" (click)="cancella_libro()">Cancella libro dall'archivio</button>
 
 <!--<input type="text" id="input_ricerca" (input)="search()" placeholder="Inserisci titolo o autore" class=input-field> -->
 

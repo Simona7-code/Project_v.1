@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Archive } from '../../archive'
+import { Book } from '../../book';
 
 @Component({
   selector: 'app-prestiti',
@@ -17,10 +18,17 @@ export class PrestitiComponent{
 
   @Input() Prestato: boolean;
   @Input() One_result: boolean;
+  @Input() Book_found:Book;
+  @Input() archivio:Archive;
+
   constructor(private servizio: FromReqBinService) { }
   ngOnInit() {}
 
-  archivio: Archive; // Dichiarazione della variabile archivio
-  //console.log(Prestato)
+  cancella_libro (){
+    console.log(this.Book_found)
+    console.log(this.archivio)
+    this.archivio.cancellaLibro(this.Book_found)
+    console.log(this.archivio)
+  }
 
 }

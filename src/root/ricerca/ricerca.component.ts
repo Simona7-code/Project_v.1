@@ -5,6 +5,7 @@ import { NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Archive } from '../archive'
 import { PrestitiComponent} from './prestiti/prestiti.component';
+import { Book } from '../book';
 
 
 @Component({
@@ -29,11 +30,15 @@ export class RicercaComponent {
   // Dichiarazione della variabile archivio come oggetto di tipo archive
   archivio: Archive; 
   risultatoRicerca: string = '';
+  //variabili da passare a prestiti component
   One_result: boolean = false;
   Prestato:boolean = true;
+  Book_found: Book;
 
   search() {
-
+    
+    //risetto book_found ad undefined ad ogni nuova ricerca
+    this.Book_found = undefined;
     //per indicare se il contenuto dell'archivio risultante è un solo elemento
     this.One_result= false;
     //sempre prestato a meno che non entri nell'if dentro l else if per il caso di un solo libro
@@ -51,8 +56,8 @@ export class RicercaComponent {
 
     //se l'input è pieno:
     else {
-      //console.log(newinput);
 
+    
       //uso il metodo del servizio per ricavare l'archivio
       this.servizio.getArch().subscribe({
         next: archivio => {
@@ -60,7 +65,7 @@ export class RicercaComponent {
           this.archivio = archivio;
           //applico il metodo cerca su archivio
           const risultato = this.archivio.cerca(newinput);
-          console.log(risultato)
+         
    
           //se la lunghezza dell'array archivio è 0, non c'è match tra la stringa e il contenuto dell'archivio
           if (risultato.length === 0) {
@@ -69,7 +74,9 @@ export class RicercaComponent {
 
           //se c'è esattamente un match
           else if (risultato.length === 1) {
-
+            
+            //salvo il libro in un oggetto che mi porterò nel component prestiti
+            this.Book_found= risultato[0];
             //setto a true la variabile che mi indicherà che il match è precisamente uno
             this.One_result=true;
             //salvo dentro libro_match la stringa che sarà poi assegnata a risultatoRicerca
@@ -105,6 +112,7 @@ export class RicercaComponent {
     //non serve cambiare la condizione di prestato perchè la condizione dell ngif prevede sempre one_result=true, quindi basta impostarla a false per non mostrare i bottoni; inoltre ad ogni nuova ricerca Prestato diventa true.
     //one_result serve reimpostarlo a false perchè se si trova un libro non in prestito e si spinge chiudi per poi riaprire la ricerca, restano i bottoni.
     this.One_result = false;
+    this.Book_found = undefined;
     this.mostraRicerca = false;
     this.risultatoRicerca = '';
     this.closeSearchEvent.emit();
