@@ -11,4 +11,12 @@ export class Book {
     this.posizione=loc;
     this.nominativo= client;
   }
+  
+  aggiungiNominativo(nome: string) {
+    this.nominativo = nome;
+  }
+
+  rimuoviNominativo() {
+    this.nominativo = "";
+  }
 }

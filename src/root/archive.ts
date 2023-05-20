@@ -52,6 +52,16 @@ export class Archive {
       this.archivio.splice(index, 1);
     }
   }
+
+  //funzione per restituire un libro
+  rimuoviNominativoALibro(libro: Book) {
+    libro.rimuoviNominativo();
+  }
+
+  //funzione per prendere in prestito un libro
+  inserisciNominativoALibro(libro: Book, nome: string ){
+    libro.aggiungiNominativo(nome);
+  }
 }
 
 
