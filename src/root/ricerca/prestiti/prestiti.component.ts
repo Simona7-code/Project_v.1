@@ -21,6 +21,9 @@ export class PrestitiComponent{
   @Input() Book_found:Book;
   @Input() archivio:Archive;
 
+  @Output() archivioUpdated: EventEmitter<Archive> = new EventEmitter<Archive>();
+
+
   constructor(private servizio: FromReqBinService) { }
   ngOnInit() {}
 
@@ -29,6 +32,7 @@ export class PrestitiComponent{
     console.log(this.archivio)
     this.archivio.cancellaLibro(this.Book_found)
     console.log(this.archivio)
+    this.archivioUpdated.emit(this.archivio);
   }
 
 }

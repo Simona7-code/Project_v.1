@@ -37,6 +37,7 @@ export class RicercaComponent {
 
   search() {
     
+    console.log(this.archivio)
     //risetto book_found ad undefined ad ogni nuova ricerca
     this.Book_found = undefined;
     //per indicare se il contenuto dell'archivio risultante è un solo elemento
@@ -107,6 +108,16 @@ export class RicercaComponent {
       });
     }
   }
+
+  //TODOOOOOOOOOOO
+  // Metodo chiamato quando viene emesso l'evento archivioUpdated
+  updateArchivio(archivio: Archive) {
+    this.archivio = archivio;
+    console.log(this.archivio)
+    this.search()
+  }
+
+
   //Funzione legata al tasto indietro: quando spinto riporta tutte le variabili booleane ai valori originali
   clean() {
     //non serve cambiare la condizione di prestato perchè la condizione dell ngif prevede sempre one_result=true, quindi basta impostarla a false per non mostrare i bottoni; inoltre ad ogni nuova ricerca Prestato diventa true.
