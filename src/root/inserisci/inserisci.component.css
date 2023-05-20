@@ -63,3 +63,17 @@
   color: beige;
   /* Altri stili per il pulsante abilitato */
 }
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container label {
+  width: 100px; /* Larghezza desiderata per le etichette */
+}
+
+.input-container input {
+  flex: 1; /* Occupa lo spazio rimanente */
+  margin-left: 10px; /* Margine sinistro tra l'etichetta e l'input */
+}

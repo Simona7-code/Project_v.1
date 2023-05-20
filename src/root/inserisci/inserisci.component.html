@@ -3,17 +3,17 @@
   <p> Inserisci i dati del nuovo testo:</p>
 
   <form (ngSubmit)="formInserimento()" #myForm="ngForm">
-    <div>
+    <div class="input-container">
       <label for="titolo">Titolo:</label>
       <input class="input-field" type="text" id="titolo" name="titolo" placeholder="campo obbligatorio*" [(ngModel)]="book.titolo" required>
     </div>
   
-    <div>
+    <div class="input-container">
       <label for="autore">Autore:</label>
       <input class="input-field" type="text" id="autore" name="autore" placeholder="campo obbligatorio*"  [(ngModel)]="book.autore" required>
     </div>
   
-    <div>
+    <div class="input-container">
       <label for="posizione">Posizione:</label>
       <input class="input-field" type="text" id="posizione" name="posizione" placeholder="campo obbligatorio*"  [(ngModel)]="book.posizione" required>
     </div>
