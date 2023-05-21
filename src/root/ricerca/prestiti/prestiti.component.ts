@@ -22,8 +22,6 @@ export class PrestitiComponent{
   @Input() archivio:Archive;
 
  
-
-
   constructor(private servizio: FromReqBinService) { }
   ngOnInit() {}
 

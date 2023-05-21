@@ -24,3 +24,15 @@
 .style_home_button:focus {
   outline: none;
 }
+
+
+
+.container.successMsg{
+  background-color: rgb(62, 190, 62);
+
+}
+
+.container.errorMsg{
+  background-color: rgb(222, 99, 99);
+
+}
