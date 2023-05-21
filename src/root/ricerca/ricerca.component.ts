@@ -52,7 +52,7 @@ export class RicercaComponent {
     console.log("search fail message (und sempre)",this.errorMessage)
     console.log(this.archivio)
 
-    
+
     //risetto book_found ad undefined ad ogni nuova ricerca
     this.Book_found = undefined;
     //per indicare se il contenuto dell'archivio risultante è un solo elemento

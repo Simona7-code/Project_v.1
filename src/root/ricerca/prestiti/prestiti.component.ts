@@ -15,7 +15,6 @@ import { Book } from '../../book';
 })
 export class PrestitiComponent{
 
-
   @Input() Prestato: boolean;
   @Input() One_result: boolean;
   @Input() Book_found:Book;
@@ -24,18 +23,16 @@ export class PrestitiComponent{
   @Input() errorMessage: string;
 
 
- 
   constructor(private servizio: FromReqBinService) { }
   ngOnInit() {}
 
   cancella_libro (){
 
-  
     console.log("inizio cancella (undefined succ ereditato da padre)-->", this.successMessage)
     console.log("inizio cancella (undefined fail ereditato da padre)-->", this.errorMessage)
-
     console.log(this.Book_found)
     console.log(this.archivio)
+    
     this.archivio.cancellaLibro(this.Book_found)
     console.log(this.archivio)
   
@@ -59,5 +56,4 @@ export class PrestitiComponent{
     });
 
   }
-
 }
