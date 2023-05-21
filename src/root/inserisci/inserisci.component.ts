@@ -27,8 +27,8 @@ export class InserisciComponent {
 
   archivio: Archive; // Dichiarazione della variabile archivio
   book: Book = new Book('', '', '', '');
-  public successMessage: string;
-  public errorMessage: string;
+  successMessage: string;
+  errorMessage: string;
 
 
   //metodo per inserire nuovo libro nell'archivio (ricarica archivio con nuovo libro )

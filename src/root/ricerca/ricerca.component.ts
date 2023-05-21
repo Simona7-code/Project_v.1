@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { FromReqBinService } from '../call_server.service';
 import { CommonModule } from '@angular/common';
-import { NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Archive } from '../archive'
 import { PrestitiComponent} from './prestiti/prestiti.component';
@@ -12,7 +11,7 @@ import { Book } from '../book';
   selector: 'app-ricerca',
   templateUrl: './ricerca.component.html',
   styleUrls: ['./ricerca.component.css'],
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule, NgIf, PrestitiComponent ],
+  imports: [ CommonModule, FormsModule, ReactiveFormsModule, PrestitiComponent ],
   standalone: true
 })
 
@@ -35,17 +34,32 @@ export class RicercaComponent {
   One_result: boolean = false;
   Prestato:boolean = true;
   Book_found: Book;
+  //per reimpostare i valori di successo e fallimento cancellazione a undefined, cosi ogni volta che viene invocata la search ritrorna pulito
+
+  successMessage: string; // Imposta il valore di successMessage a undefined
+  errorMessage: string; // Imposta il valore di errorMessage a undefined
+  
+
 
   search() {
     
+    //per reimpostare i valori di successo e fallimento cancellazione a undefined, cosi ogni volta che viene invocata la search ritrorna pulito
+    this.successMessage = undefined; 
+    this.errorMessage = undefined; 
+
+
+    console.log("search success message (und sempre)", this.successMessage)
+    console.log("search fail message (und sempre)",this.errorMessage)
     console.log(this.archivio)
+
+    
     //risetto book_found ad undefined ad ogni nuova ricerca
     this.Book_found = undefined;
     //per indicare se il contenuto dell'archivio risultante è un solo elemento
     this.One_result= false;
     //sempre prestato a meno che non entri nell'if dentro l else if per il caso di un solo libro
     this.Prestato= true;
-
+  
     //input prende il contenuto preso dall input
     var input: HTMLInputElement = document.getElementById("input_ricerca") as HTMLInputElement;
     //newname prende il valore del campo di input
@@ -109,15 +123,6 @@ export class RicercaComponent {
       });
     }
   }
-
-  //TODOOOOOOOOOOO
-  // Metodo chiamato quando viene emesso l'evento archivioUpdated
-  updateArchivio(archivio: Archive) {
-    this.archivio = archivio;
-    console.log(this.archivio)
-    this.search()
-  }
-
 
   //Funzione legata al tasto indietro: quando spinto riporta tutte le variabili booleane ai valori originali
   clean() {

@@ -20,15 +20,20 @@ export class PrestitiComponent{
   @Input() One_result: boolean;
   @Input() Book_found:Book;
   @Input() archivio:Archive;
+  @Input() successMessage: string;
+  @Input() errorMessage: string;
+
 
  
   constructor(private servizio: FromReqBinService) { }
   ngOnInit() {}
 
-  public successMessage: string;
-  public errorMessage: string;
-
   cancella_libro (){
+
+  
+    console.log("inizio cancella (undefined succ ereditato da padre)-->", this.successMessage)
+    console.log("inizio cancella (undefined fail ereditato da padre)-->", this.errorMessage)
+
     console.log(this.Book_found)
     console.log(this.archivio)
     this.archivio.cancellaLibro(this.Book_found)
@@ -36,20 +41,23 @@ export class PrestitiComponent{
   
       // observable per caricare l'archivio sul server remoto
     this.servizio.postArch(this.archivio).subscribe({
-
       next: successMessage => {
-        console.log(successMessage);
+        //nON è MAI UNDEFINED QUA
+        console.log("pre success (undefined)-->",successMessage);
         // Gestisci il successo della sovrascrittura
         this.successMessage = 'Sovrascrittura avvenuta con successo';
-        this.errorMessage = null;
+        //this.errorMessage = null;
+        console.log("post success (pieno)-->", successMessage);
       },
       error: errorMessage => {
-        console.error(errorMessage);
+        console.error("pre fallimento (undefined)-->", errorMessage);
         // Gestisci l'errore nella sovrascrittura
-        this.successMessage = null;
+        //this.successMessage = null;
         this.errorMessage = 'Errore durante la sovrascrittura dei dati: ' + errorMessage;
-      }
+        console.error("post fallim (pieno se fallito)-->",errorMessage);
+      }     
     });
+
   }
 
 }
