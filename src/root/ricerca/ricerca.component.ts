@@ -19,6 +19,7 @@ import { Book } from '../book';
 export class RicercaComponent {
 
   @Input() mostraRicerca: boolean;
+  
   //raccoglie in automatico l'evento che si trova in input htlm del proprio component
   @Output() newInputEvent= new EventEmitter<string>();
   @Output() closeSearchEvent = new EventEmitter();

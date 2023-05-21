@@ -64,7 +64,7 @@ export class InserisciComponent {
             next: successMessage => {
               console.log(successMessage);
               // Gestisci il successo della sovrascrittura
-              this.successMessage = 'Sovrascrittura avvenuta con successo';
+              this.successMessage = 'Inserimento avvenuto con successo';
               this.errorMessage = null;
             },
             error: errorMessage => {

@@ -4,6 +4,15 @@
   <!--(click)="apri_input()" -->
   <button class="style_home_button" id="Prendi_prestito" (click)="cancella_libro()">Cancella libro dall'archivio</button>
 
+    <!-- Messaggio di successo -->
+    <div *ngIf="successMessage" class="container successMsg">
+      {{ successMessage }}
+    </div>
+  
+    <!-- Messaggio di errore -->
+    <div *ngIf="errorMessage" class="container errorMsg">
+      {{ errorMessage }}
+    </div>
 <!--<input type="text" id="input_ricerca" (input)="search()" placeholder="Inserisci titolo o autore" class=input-field> -->
 
 <!--<div id="risultato" class="container risultato">{{ risultatoRicerca }} </div>-->
