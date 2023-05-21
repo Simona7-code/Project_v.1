@@ -75,6 +75,10 @@ export class InserisciComponent {
             }
           });
         }
+        else{
+            this.successMessage = null;
+            this.errorMessage = 'Il libro che stai cercando di inserire è già presente nell\'archivio.';
+        }
       },
       //fallimento nell'observable del recupero archivio
       error: error => {
