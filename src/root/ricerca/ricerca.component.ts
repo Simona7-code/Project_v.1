@@ -36,22 +36,9 @@ export class RicercaComponent {
   Book_found: Book;
   //per reimpostare i valori di successo e fallimento cancellazione a undefined, cosi ogni volta che viene invocata la search ritrorna pulito
 
-  successMessage: string; // Imposta il valore di successMessage a undefined
-  errorMessage: string; // Imposta il valore di errorMessage a undefined
   
-
-
   search() {
     
-    //per reimpostare i valori di successo e fallimento cancellazione a undefined, cosi ogni volta che viene invocata la search ritrorna pulito
-    this.successMessage = undefined; 
-    this.errorMessage = undefined; 
-
-
-    console.log("search success message (und sempre)", this.successMessage)
-    console.log("search fail message (und sempre)",this.errorMessage)
-    console.log(this.archivio)
-
 
     //risetto book_found ad undefined ad ogni nuova ricerca
     this.Book_found = undefined;
@@ -79,6 +66,7 @@ export class RicercaComponent {
         next: archivio => {
           //salvo dentro archivio (var del componente dichiarata sopra come di tipo archive) l'archivio preso dal db
           this.archivio = archivio;
+          console.log(this.archivio)
           //applico il metodo cerca su archivio
           const risultato = this.archivio.cerca(newinput);
          
@@ -106,7 +94,7 @@ export class RicercaComponent {
               //console.log(this.Prestato)
               return `Autore: ${item.autore}\nTitolo: ${item.titolo}\nPosizione: ${item.posizione}\n${nominativoString}`;
             });
-            //uso la posizione 0 di libro_match perchè a stringa è salvata dentro una lista/array #TODO
+            //uso la posizione 0 di libro_match perchè la stringa è salvata dentro una lista/array #TODO
             this.risultatoRicerca = libro_match[0];
           }
 
@@ -119,6 +107,7 @@ export class RicercaComponent {
         error: error => {
           // mostro in console l' errore #CHIEDI SE VA BENE 
           console.error('Errore durante la richiesta:', error);
+          this.risultatoRicerca= 'Errore durante la richiesta, si prega di riprovare.';
         }
       });
     }
@@ -130,7 +119,9 @@ export class RicercaComponent {
     //one_result serve reimpostarlo a false perchè se si trova un libro non in prestito e si spinge chiudi per poi riaprire la ricerca, restano i bottoni.
     this.One_result = false;
     this.Book_found = undefined;
+    //per nascondere tutto il blocco ricerca
     this.mostraRicerca = false;
+    //risetto risultato ricerca a stringa vuota
     this.risultatoRicerca = '';
     this.closeSearchEvent.emit();
   }

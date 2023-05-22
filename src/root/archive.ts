@@ -22,13 +22,12 @@ export class Archive {
     return libriTrovati;
   }
   
-  //effettua un controllo case insensitive e restituisce vero se è contenuto, falso altrimenti
+  //effettua un controllo case insensitive e restituisce vero se è contenuto, falso altrimenti (controlla solo titolo ed autore)
   contieneLibro(book: Book): boolean {
 
     return this.archivio.some(item => 
       item.titolo.toLowerCase() === book.titolo.toLowerCase() 
-    && item.autore.toLowerCase() === book.autore.toLowerCase() 
-    && item.posizione.toLowerCase() === book.posizione.toLowerCase() 
+    && item.autore.toLowerCase() === book.autore.toLowerCase()  
     );
   }
 

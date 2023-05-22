@@ -1,7 +1,6 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { NgZone, Component, Output, EventEmitter, Input  } from '@angular/core';
 import { FromReqBinService } from '../../call_server.service';
 import { CommonModule } from '@angular/common';
-import { NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Archive } from '../../archive'
 import { Book } from '../../book';
@@ -10,7 +9,7 @@ import { Book } from '../../book';
   selector: 'app-prestiti',
   templateUrl: './prestiti.component.html',
   styleUrls: ['./prestiti.component.css'],
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule,NgIf ],
+  imports: [ CommonModule, FormsModule, ReactiveFormsModule ],
   standalone: true
 })
 export class PrestitiComponent{
@@ -19,41 +18,59 @@ export class PrestitiComponent{
   @Input() One_result: boolean;
   @Input() Book_found:Book;
   @Input() archivio:Archive;
-  @Input() successMessage: string;
-  @Input() errorMessage: string;
+  successMessage: string;
+  errorMessage: string =undefined;
+  cancellato:boolean = false;
 
 
-  constructor(private servizio: FromReqBinService) { }
+  constructor(private servizio: FromReqBinService, private ngZone: NgZone) { }
   ngOnInit() {}
 
   cancella_libro (){
 
-    console.log("inizio cancella (undefined succ ereditato da padre)-->", this.successMessage)
-    console.log("inizio cancella (undefined fail ereditato da padre)-->", this.errorMessage)
-    console.log(this.Book_found)
-    console.log(this.archivio)
-    
-    this.archivio.cancellaLibro(this.Book_found)
-    console.log(this.archivio)
+    //console.log(this.Book_found)
+    //console.log(this.archivio)
+    if ( this.archivio.contieneLibro(this.Book_found) ){
+      this.archivio.cancellaLibro(this.Book_found)
+    //console.log(this.archivio)
   
-      // observable per caricare l'archivio sul server remoto
+    // observable per caricare l'archivio sul server remoto
     this.servizio.postArch(this.archivio).subscribe({
-      next: successMessage => {
-        //nON è MAI UNDEFINED QUA
-        console.log("pre success (undefined)-->",successMessage);
-        // Gestisci il successo della sovrascrittura
-        this.successMessage = 'Sovrascrittura avvenuta con successo';
-        //this.errorMessage = null;
-        console.log("post success (pieno)-->", successMessage);
-      },
-      error: errorMessage => {
-        console.error("pre fallimento (undefined)-->", errorMessage);
-        // Gestisci l'errore nella sovrascrittura
-        //this.successMessage = null;
-        this.errorMessage = 'Errore durante la sovrascrittura dei dati: ' + errorMessage;
-        console.error("post fallim (pieno se fallito)-->",errorMessage);
-      }     
-    });
 
+      next: successMessage => {
+        this.ngZone.run(() => {
+      
+          // Gestisci il successo della sovrascrittura
+          this.successMessage = 'Rimozione dall\'archivio avvenuta con successo.'
+
+          setTimeout(() => {
+            this.successMessage = undefined;
+            this.errorMessage = undefined;
+            this.cancellato = true;
+          }, 1500);
+        });
+      },
+
+      error: errorMessage => {
+        this.ngZone.run(() => {
+         
+          this.errorMessage = 'Errore durante la sovrascrittura dei dati.';
+        
+          setTimeout(() => {
+            this.successMessage = undefined;
+            this.errorMessage = undefined;
+          }, 1500);
+        });
+      }
+    });
+    }
+    else{
+      this.errorMessage = 'Questo libro è stato già rimosso, procedere ad una nuova ricerca.';
+
+      setTimeout(() => {
+        this.errorMessage = undefined;
+      }, 1500);
+    }
+    
   }
 }
