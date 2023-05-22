@@ -1,4 +1,4 @@
-import { NgZone, Component, Output, EventEmitter, Input  } from '@angular/core';
+import { NgZone, Component, Output, EventEmitter, Input, ChangeDetectorRef } from '@angular/core';
 import { FromReqBinService } from '../../call_server.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,16 +18,36 @@ export class PrestitiComponent{
   @Input() One_result: boolean;
   @Input() Book_found:Book;
   @Input() archivio:Archive;
+  @Input() InputRestituisciBook:boolean;
+  @Input() InputPrestaBook:boolean;
   successMessage: string;
-  errorMessage: string =undefined;
-  cancellato:boolean = false;
-  InputPrestaBook: boolean = false;
-  InputRestituisciBook: boolean = false;
+  errorMessage: string;
 
 
-  constructor(private servizio: FromReqBinService, private ngZone: NgZone) { }
-  ngOnInit() {}
+  constructor(private servizio: FromReqBinService, private ngZone: NgZone, private cdr: ChangeDetectorRef) { }
+  ngOnInit() { }
 
+  InputRestituisci(){
+   
+    console.log( "REST (dovrebbe prendere FF da ricerca, FT se clicchi e chiudi e riclicchi)",this.InputPrestaBook,this.InputRestituisciBook)
+    this.InputRestituisciBook = !this.InputRestituisciBook;
+    console.log( "REST (ff se non lo vedi, ft se lo vedi)",this.InputPrestaBook,this.InputRestituisciBook)
+
+  }
+
+  InputPresta(){
+    console.log("PREST (dovrebbe prendere FF da ricerca)", this.InputPrestaBook,this.InputRestituisciBook)
+    this.InputPrestaBook = !this.InputPrestaBook;
+    console.log("PREST", this.InputPrestaBook,this.InputRestituisciBook)
+  }
+
+  resetValues() {
+    // Reimposta i valori desiderati del componente figlio
+    this.InputRestituisciBook = false;
+    this.InputPrestaBook = false;
+    // Esegui la change detection per propagare le modifiche nel DOM
+    this.cdr.detectChanges();
+  }
   cancella_libro (){
 
     //console.log(this.Book_found)
@@ -48,7 +68,7 @@ export class PrestitiComponent{
           setTimeout(() => {
             this.successMessage = undefined;
             this.errorMessage = undefined;
-            this.cancellato = true;
+       
           }, 1200);
         });
       },
@@ -68,26 +88,15 @@ export class PrestitiComponent{
     }
     else{
       this.errorMessage = 'Questo libro è stato già rimosso, procedere ad una nuova ricerca.';
-
-      setTimeout(() => {
-        this.errorMessage = undefined;
-      }, 1200);
     }
-    
   }
-
-  InputRestituisci(){
-    this.InputRestituisciBook = !this.InputRestituisciBook;
-  }
-  InputPresta(){
-    this.InputPrestaBook = !this.InputPrestaBook;
-  }
-
 
  
   Presta(){
 
   }
 
-  Restituisci(){}
+  Restituisci(){
+
+  }
 }

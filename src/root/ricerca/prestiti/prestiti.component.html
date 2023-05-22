@@ -31,7 +31,9 @@
 
  <!-- se la ricerca ha prodotto un solo match e quel libro è in prestito mostro il bottone per restituirlo-->
 <div *ngIf="One_result && Prestato">
+  
   <button class="style_home_button" id="lascia_prestito"  (click)="InputRestituisci()">Restituisci il libro</button>
+
   <div *ngIf="InputRestituisciBook">
     <label for="clienteInput">Inserisci nominativo cliente:</label>
     <input type="text" id="clienteInput">
