@@ -30,9 +30,20 @@ export class Archive {
     && item.autore.toLowerCase() === book.autore.toLowerCase()  
     );
   }
-
+  //restituisce true se esiste un libro in quella posizione nell archivio, false se la posizione è libera
+  stessaPosizione(book: Book) {
+    const existingBook = this.archivio.find(l => l.posizione === book.posizione);
+    if (existingBook) {
+      // Un libro con la stessa posizione esiste già nell'archivio
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
   //aggiungi libro all'archivio
   aggiungiLibro(book: Book) {
+    
     this.archivio.push(book)
   }
   

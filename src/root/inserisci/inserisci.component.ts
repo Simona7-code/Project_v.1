@@ -54,8 +54,10 @@ export class InserisciComponent {
         console.log(this.archivio);
         let contiene = this.archivio.contieneLibro(this.book);
         console.log(contiene);
+        let posizioneOccupata=this.archivio.stessaPosizione(this.book)
   
-        if (!contiene) {
+        //se il libro non è contenuto nell'archivio e la posizione è libera lo aggiungo e aggiorno l'archivio sul server
+        if (!contiene && !posizioneOccupata) {
           this.archivio.aggiungiLibro(this.book);
   
           // observable per caricare l'archivio sul server remoto
@@ -75,9 +77,15 @@ export class InserisciComponent {
             }
           });
         }
-        else{
+        //se il libro è contenuto nell'archivio restituisco errore
+        else if (contiene){
             this.successMessage = null;
             this.errorMessage = 'Il libro che stai cercando di inserire è già presente nell\'archivio.';
+        }
+        //Se il libro non è contenuto in archivio ma la posizione è già occupata restituisco errore
+        else if (posizioneOccupata){
+          this.successMessage = null;
+            this.errorMessage = 'La posizione in cui stai cercando di aggiungere il libro è già occupata, cambiare la posizione';
         }
       },
       //fallimento nell'observable del recupero archivio

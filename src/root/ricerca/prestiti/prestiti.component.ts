@@ -1,4 +1,4 @@
-import { NgZone, Component, Output, EventEmitter, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { FromReqBinService } from '../../call_server.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,67 +24,48 @@ export class PrestitiComponent{
   errorMessage: string;
 
 
-  constructor(private servizio: FromReqBinService, private ngZone: NgZone, private cdr: ChangeDetectorRef) { }
+  constructor(private servizio: FromReqBinService,private cdr: ChangeDetectorRef) { }
   ngOnInit() { }
 
   InputRestituisci(){
-   
-    console.log( "REST (dovrebbe prendere FF da ricerca, FT se clicchi e chiudi e riclicchi)",this.InputPrestaBook,this.InputRestituisciBook)
     this.InputRestituisciBook = !this.InputRestituisciBook;
-    console.log( "REST (ff se non lo vedi, ft se lo vedi)",this.InputPrestaBook,this.InputRestituisciBook)
-
   }
 
   InputPresta(){
-    console.log("PREST (dovrebbe prendere FF da ricerca)", this.InputPrestaBook,this.InputRestituisciBook)
     this.InputPrestaBook = !this.InputPrestaBook;
-    console.log("PREST", this.InputPrestaBook,this.InputRestituisciBook)
   }
 
   resetValues() {
     // Reimposta i valori desiderati del componente figlio
     this.InputRestituisciBook = false;
     this.InputPrestaBook = false;
-    // Esegui la change detection per propagare le modifiche nel DOM
+    //questi determinano gli output della cancellazione libro
+    this.successMessage = undefined;
+    this.errorMessage = undefined;
+    // Esegui la change detection per propagare le modifiche nel DOM ad ogni nuovo input di ricerca
     this.cdr.detectChanges();
   }
+
+  
   cancella_libro (){
 
     //console.log(this.Book_found)
     //console.log(this.archivio)
     if ( this.archivio.contieneLibro(this.Book_found) ){
       this.archivio.cancellaLibro(this.Book_found)
-    //console.log(this.archivio)
+      //console.log(this.archivio)
   
-    // observable per caricare l'archivio sul server remoto
-    this.servizio.postArch(this.archivio).subscribe({
-
-      next: successMessage => {
-        this.ngZone.run(() => {
-      
+      // observable per caricare l'archivio sul server remoto
+      this.servizio.postArch(this.archivio).subscribe({
+        next: () => {
           // Gestisci il successo della sovrascrittura
-          this.successMessage = 'Rimozione dall\'archivio avvenuta con successo.'
-
-          setTimeout(() => {
-            this.successMessage = undefined;
-            this.errorMessage = undefined;
-       
-          }, 1200);
-        });
-      },
-
-      error: errorMessage => {
-        this.ngZone.run(() => {
-         
-          this.errorMessage = 'Errore durante la sovrascrittura dei dati.';
-        
-          setTimeout(() => {
-            this.successMessage = undefined;
-            this.errorMessage = undefined;
-          }, 1200);
-        });
-      }
-    });
+          this.successMessage = 'Rimozione dall\'archivio avvenuta con successo.';
+        },
+        error: () => {
+          this.errorMessage = 'Errore durante la rimozione del libro. Riprovare.';
+        }
+      });
+    
     }
     else{
       this.errorMessage = 'Questo libro è stato già rimosso, procedere ad una nuova ricerca.';
