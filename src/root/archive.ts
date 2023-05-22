@@ -70,12 +70,13 @@ export class Archive {
 
   //funzione per restituire un libro
   rimuoviNominativoALibro(book: Book) {
-    book.rimuoviNominativo();
+    book.nominativo = "";
   }
 
   //funzione per prendere in prestito un libro
   inserisciNominativoALibro(book: Book, nome: string ){
-    book.aggiungiNominativo(nome);
+    
+    book.nominativo = nome;
   }
 }
 

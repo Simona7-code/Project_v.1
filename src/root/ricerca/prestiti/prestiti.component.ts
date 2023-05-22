@@ -19,8 +19,10 @@ export class PrestitiComponent{
   @Input() Book_found:Book;
   @Input() archivio:Archive;
   @Input() InputPrestaBook:boolean;
+  @Input() InputRestituisciBook:boolean;
   successMessage: string;
   errorMessage: string;
+  clientInputValue: string;
 
 
   constructor(private servizio: FromReqBinService,private cdr: ChangeDetectorRef) { }
@@ -34,6 +36,7 @@ export class PrestitiComponent{
   resetValues() {
     // Reimposta i valori desiderati del componente figlio
     this.InputPrestaBook = false;
+    this.InputRestituisciBook=true;
     //questi determinano gli output della cancellazione libro
     this.successMessage = undefined;
     this.errorMessage = undefined;
@@ -69,30 +72,34 @@ export class PrestitiComponent{
 
   Restituisci(){
 
-    if (this.Book_found instanceof Book) {
-      console.error('La variabile libro  è un\'istanza di Book');
-    } else {
-      console.error('La variabile libro non è un\'istanza di Book');
-      console.log(typeof this.Book_found);
-      
-    }
-    console.log(typeof this.Book_found);
-    console.log(this.Book_found)
     this.archivio.rimuoviNominativoALibro(this.Book_found)
-    console.log(this.Book_found)
+ 
     // observable per caricare l'archivio sul server remoto
     this.servizio.postArch(this.archivio).subscribe({
       next: () => {
         // Gestisci il successo della sovrascrittura
-        this.successMessage = 'Rimozione dall\'archivio avvenuta con successo.';
+        this.successMessage = 'Restituzione inserita con successo.';
+        this.InputRestituisciBook= false;
       },
       error: () => {
-        this.errorMessage = 'Errore durante la rimozione del libro. Riprovare.';
+        this.errorMessage = 'Errore durante la restituzione del libro. Riprovare.';
       }
     });
   }
-  Presta(){
-  
 
+  Presta(){
+
+    this.archivio.inserisciNominativoALibro(this.Book_found, this.clientInputValue )
+    // observable per caricare l'archivio sul server remoto
+    this.servizio.postArch(this.archivio).subscribe({
+      next: () => {
+        // Gestisci il successo della sovrascrittura
+        this.successMessage = 'Prenotazione inserita con successo.';
+        this.InputPrestaBook=false;
+      },
+      error: () => {
+        this.errorMessage = 'Errore durante la prenotazione del libro. Riprovare.';
+      }
+    });
   }
 }

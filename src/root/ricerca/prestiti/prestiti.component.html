@@ -6,7 +6,7 @@
 
   <div class="container" *ngIf="InputPrestaBook">
     <label for="clienteInput">Inserisci nominativo cliente:</label>
-    <input class="input-field" type="text" id="clienteInput">
+    <input class="input-field" type="text" id="clienteInput" [(ngModel)]="clientInputValue">
     <button class="style_home_button" (click)="Presta()">Invia</button>
   </div>
   
@@ -32,6 +32,18 @@
  <!-- se la ricerca ha prodotto un solo match e quel libro è in prestito mostro il bottone per restituirlo-->
 <div *ngIf="One_result && Prestato">
   
-  <button class="style_home_button" id="lascia_prestito"  (click)="Restituisci()">Restituisci il libro</button>
+  <button  *ngIf="InputRestituisciBook" class="style_home_button" id="lascia_prestito"  (click)="Restituisci()">Restituisci il libro</button>
+
+    <!-- se il messaggio di successo è diverso da undefined mostro il messaggio di successo-->
+
+    <div *ngIf="successMessage !== undefined " class="container successMsg">
+      {{ successMessage }}
+    </div>
+    
+     <!-- se il messaggio di errore è diverso da undefined mostro il messaggio di errore-->
+  
+    <div *ngIf="errorMessage !== undefined " class="container errorMsg">
+      {{ errorMessage }}
+    </div>
 
 </div>

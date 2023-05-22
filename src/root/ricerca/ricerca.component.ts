@@ -38,7 +38,7 @@ export class RicercaComponent {
   Book_found: Book;
   //per reimpostare i valori di successo e fallimento cancellazione a undefined, cosi ogni volta che viene invocata la search ritrorna pulito
   InputPrestaBook: boolean=false;
-  InputRestituisciBook: boolean=false;
+  InputRestituisciBook: boolean=true;
 
   
   search() {
@@ -131,7 +131,7 @@ export class RicercaComponent {
     //risetto risultato ricerca a stringa vuota
     this.risultatoRicerca = '';
     this.InputPrestaBook= false;
-    this.InputRestituisciBook = false;
+    this.InputRestituisciBook =true;
     this.closeSearchEvent.emit();
   }
 
