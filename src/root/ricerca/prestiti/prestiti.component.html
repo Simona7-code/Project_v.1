@@ -2,7 +2,14 @@
 <div *ngIf="One_result  && !Prestato">
   
   <!-- se i messaggi di successo e fallimento sono entrambi contemporaneamente undefined mostro i bottoni per cancellare o prendere in prestito-->
-  <button class="style_home_button" id="Prendi_prestito" *ngIf="successMessage === undefined && errorMessage === undefined">Prendi in prestito</button>
+  <button class="style_home_button" id="Prendi_prestito" *ngIf="successMessage === undefined && errorMessage === undefined" (click)="InputPresta()">Prendi in prestito</button>
+
+  <div *ngIf="InputPrestaBook">
+    <label for="clienteInput">Inserisci nominativo cliente:</label>
+    <input type="text" id="clienteInput">
+    <button (click)="Presta()">Invia</button>
+  </div>
+  
 
   <button class="style_home_button" id="cancella_libro" (click)="cancella_libro()" *ngIf="successMessage === undefined && errorMessage === undefined">
     Cancella libro dall'archivio
@@ -24,6 +31,11 @@
 
  <!-- se la ricerca ha prodotto un solo match e quel libro è in prestito mostro il bottone per restituirlo-->
 <div *ngIf="One_result && Prestato">
-  <button class="style_home_button" id="lascia_prestito" >Restituisci il libro</button>
-
+  <button class="style_home_button" id="lascia_prestito"  (click)="InputRestituisci()">Restituisci il libro</button>
+  <div *ngIf="InputRestituisciBook">
+    <label for="clienteInput">Inserisci nominativo cliente:</label>
+    <input type="text" id="clienteInput">
+    <button (click)="Restituisci()">Invia</button>
+  </div>
+  
 </div>

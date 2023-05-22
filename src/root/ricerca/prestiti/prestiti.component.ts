@@ -21,6 +21,8 @@ export class PrestitiComponent{
   successMessage: string;
   errorMessage: string =undefined;
   cancellato:boolean = false;
+  InputPrestaBook: boolean = false;
+  InputRestituisciBook: boolean = false;
 
 
   constructor(private servizio: FromReqBinService, private ngZone: NgZone) { }
@@ -73,4 +75,19 @@ export class PrestitiComponent{
     }
     
   }
+
+  InputRestituisci(){
+    this.InputRestituisciBook = !this.InputRestituisciBook;
+  }
+  InputPresta(){
+    this.InputPrestaBook = !this.InputPrestaBook;
+  }
+
+
+ 
+  Presta(){
+
+  }
+
+  Restituisci(){}
 }
