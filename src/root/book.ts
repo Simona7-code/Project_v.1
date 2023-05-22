@@ -5,7 +5,7 @@ export class Book {
   posizione: string;
   nominativo: string;
 
-  constructor(  aut: string, tit:string, loc: string, client: string) {
+  constructor( aut: string, tit:string, loc: string, client: string) {
     this.autore=aut;
     this.titolo=tit;
     this.posizione=loc;

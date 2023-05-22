@@ -67,12 +67,32 @@ export class PrestitiComponent{
     }
   }
 
- 
-  Presta(){
-
-  }
-
   Restituisci(){
+
+    if (this.Book_found instanceof Book) {
+      console.error('La variabile libro  è un\'istanza di Book');
+    } else {
+      console.error('La variabile libro non è un\'istanza di Book');
+      console.log(typeof this.Book_found);
+      
+    }
+    console.log(typeof this.Book_found);
+    console.log(this.Book_found)
+    this.archivio.rimuoviNominativoALibro(this.Book_found)
+    console.log(this.Book_found)
+    // observable per caricare l'archivio sul server remoto
+    this.servizio.postArch(this.archivio).subscribe({
+      next: () => {
+        // Gestisci il successo della sovrascrittura
+        this.successMessage = 'Rimozione dall\'archivio avvenuta con successo.';
+      },
+      error: () => {
+        this.errorMessage = 'Errore durante la rimozione del libro. Riprovare.';
+      }
+    });
+  }
+  Presta(){
+  
 
   }
 }
