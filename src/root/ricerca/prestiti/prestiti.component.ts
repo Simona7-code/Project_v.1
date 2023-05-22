@@ -31,12 +31,7 @@ export class PrestitiComponent{
     // Reimposta i valori desiderati del componente figlio
     this.InputRestituisciBook = false;
     this.InputPrestaBook = false;
-    //risetto book_found ad undefined ad ogni nuova ricerca
-    this.Book_found = undefined;
-    //per indicare se il contenuto dell'archivio risultante è un solo elemento
-    this.One_result= false;
-    //sempre prestato a meno che non entri nell'if dentro l else if per il caso di un solo libro
-    this.Prestato= true;
+ 
     
     // Esegui la change detection per propagare le modifiche nel DOM
     this.cdr.detectChanges();
