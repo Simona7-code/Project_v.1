@@ -1,4 +1,4 @@
-import { NgZone, Component, Output, EventEmitter, Input, ChangeDetectorRef } from '@angular/core';
+import { NgZone, Component, Input, ChangeDetectorRef } from '@angular/core';
 import { FromReqBinService } from '../../call_server.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +27,21 @@ export class PrestitiComponent{
   constructor(private servizio: FromReqBinService, private ngZone: NgZone, private cdr: ChangeDetectorRef) { }
   ngOnInit() { }
 
+  resetValues() {
+    // Reimposta i valori desiderati del componente figlio
+    this.InputRestituisciBook = false;
+    this.InputPrestaBook = false;
+    //risetto book_found ad undefined ad ogni nuova ricerca
+    this.Book_found = undefined;
+    //per indicare se il contenuto dell'archivio risultante è un solo elemento
+    this.One_result= false;
+    //sempre prestato a meno che non entri nell'if dentro l else if per il caso di un solo libro
+    this.Prestato= true;
+    
+    // Esegui la change detection per propagare le modifiche nel DOM
+    this.cdr.detectChanges();
+  }
+
   InputRestituisci(){
    
     console.log( "REST (dovrebbe prendere FF da ricerca, FT se clicchi e chiudi e riclicchi)",this.InputPrestaBook,this.InputRestituisciBook)
@@ -41,13 +56,7 @@ export class PrestitiComponent{
     console.log("PREST", this.InputPrestaBook,this.InputRestituisciBook)
   }
 
-  resetValues() {
-    // Reimposta i valori desiderati del componente figlio
-    this.InputRestituisciBook = false;
-    this.InputPrestaBook = false;
-    // Esegui la change detection per propagare le modifiche nel DOM
-    this.cdr.detectChanges();
-  }
+ 
   cancella_libro (){
 
     //console.log(this.Book_found)

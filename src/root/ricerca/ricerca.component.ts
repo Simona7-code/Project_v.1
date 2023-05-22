@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input,ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { FromReqBinService } from '../call_server.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,7 +27,7 @@ export class RicercaComponent {
 
   
   ngOnInit() {}
-  constructor(private servizio: FromReqBinService, private cdr: ChangeDetectorRef) {}
+  constructor(private servizio: FromReqBinService) {}
 
   // Dichiarazione della variabile archivio come oggetto di tipo archive
   archivio: Archive; 
@@ -35,7 +35,7 @@ export class RicercaComponent {
   //variabili da passare a prestiti component
   One_result: boolean = false;
   Prestato:boolean = true;
-  Book_found: Book;
+  Book_found: Book = undefined;;
   //per reimpostare i valori di successo e fallimento cancellazione a undefined, cosi ogni volta che viene invocata la search ritrorna pulito
   InputPrestaBook: boolean=false;
   InputRestituisciBook: boolean=false;
@@ -43,20 +43,9 @@ export class RicercaComponent {
   
   search() {
     
+    //per resettare var in child Prestiti
     this.childComponent.resetValues();
-    //risetto book_found ad undefined ad ogni nuova ricerca
-    this.Book_found = undefined;
-    //per indicare se il contenuto dell'archivio risultante è un solo elemento
-    this.One_result= false;
-    //sempre prestato a meno che non entri nell'if dentro l else if per il caso di un solo libro
-    this.Prestato= true;
-    //per non mostrare campo di prestito e restituzione se la volta precedente è stato aperto ma non chiusp
-    this.InputPrestaBook;
-    this.InputRestituisciBook;
-    console.log("valore degli input presta e rest a inizio search", this.InputPrestaBook,this.InputRestituisciBook)
-    // NON FUNZIONAAAAAAAAAAAAAAAA    this.cdr.detectChanges();
-
-
+  
     //input prende il contenuto preso dall input
     var input: HTMLInputElement = document.getElementById("input_ricerca") as HTMLInputElement;
     //newname prende il valore del campo di input
