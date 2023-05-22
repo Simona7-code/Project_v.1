@@ -7,6 +7,7 @@ export class Archive {
     this.archivio = libri;
   }
 
+
   cerca(titolo: string) {
 
     let libriTrovati: Book[] = [];
@@ -22,6 +23,7 @@ export class Archive {
     return libriTrovati;
   }
   
+
   //effettua un controllo case insensitive e restituisce vero se è contenuto, falso altrimenti (controlla solo titolo ed autore)
   contieneLibro(book: Book): boolean {
 
@@ -30,6 +32,8 @@ export class Archive {
     && item.autore.toLowerCase() === book.autore.toLowerCase()  
     );
   }
+
+
   //restituisce true se esiste un libro in quella posizione nell archivio, false se la posizione è libera
   stessaPosizione(book: Book) {
     const existingBook = this.archivio.find(l => l.posizione === book.posizione);
@@ -41,9 +45,10 @@ export class Archive {
       return false;
     }
   }
+
+
   //aggiungi libro all'archivio
   aggiungiLibro(book: Book) {
-    
     this.archivio.push(book)
   }
   

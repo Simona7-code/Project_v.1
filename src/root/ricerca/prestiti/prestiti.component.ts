@@ -18,7 +18,6 @@ export class PrestitiComponent{
   @Input() One_result: boolean;
   @Input() Book_found:Book;
   @Input() archivio:Archive;
-  @Input() InputRestituisciBook:boolean;
   @Input() InputPrestaBook:boolean;
   successMessage: string;
   errorMessage: string;
@@ -27,9 +26,6 @@ export class PrestitiComponent{
   constructor(private servizio: FromReqBinService,private cdr: ChangeDetectorRef) { }
   ngOnInit() { }
 
-  InputRestituisci(){
-    this.InputRestituisciBook = !this.InputRestituisciBook;
-  }
 
   InputPresta(){
     this.InputPrestaBook = !this.InputPrestaBook;
@@ -37,7 +33,6 @@ export class PrestitiComponent{
 
   resetValues() {
     // Reimposta i valori desiderati del componente figlio
-    this.InputRestituisciBook = false;
     this.InputPrestaBook = false;
     //questi determinano gli output della cancellazione libro
     this.successMessage = undefined;
@@ -46,7 +41,7 @@ export class PrestitiComponent{
     this.cdr.detectChanges();
   }
 
-  
+
   cancella_libro (){
 
     //console.log(this.Book_found)
