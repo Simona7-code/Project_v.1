@@ -47,7 +47,7 @@ export class PrestitiComponent{
             this.successMessage = undefined;
             this.errorMessage = undefined;
             this.cancellato = true;
-          }, 1000);
+          }, 1200);
         });
       },
 
@@ -59,7 +59,7 @@ export class PrestitiComponent{
           setTimeout(() => {
             this.successMessage = undefined;
             this.errorMessage = undefined;
-          }, 1000);
+          }, 1200);
         });
       }
     });
@@ -69,7 +69,7 @@ export class PrestitiComponent{
 
       setTimeout(() => {
         this.errorMessage = undefined;
-      }, 1000);
+      }, 1200);
     }
     
   }
