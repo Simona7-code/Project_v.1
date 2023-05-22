@@ -2,7 +2,7 @@
   background-color: beige;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 10%;
+  padding: 3%;
   position: relative;
 }
 .input-field {
@@ -20,28 +20,27 @@
   color: rgb(110, 62, 20);
   border-radius: 5px;
   border: rgb(110, 62, 20);
-  margin-top: 1%; /* Aggiunge spazio verso l'alto di 10px */
-  margin-right: 20px;
-  margin-bottom: 10%; /* Aggiunge spazio verso il basso di 10px */
+  margin-right: 70px; /* Aggiunge margine a destra del bottone */
 }
 .style_home_button:hover {
   background-color: rgb(110, 62, 20);
   color: beige;
-  margin-bottom: 10%;
+
 }
 
 .style_home_button:focus {
   outline: none;
 }
 
-
-
 .container.successMsg{
   background-color: rgb(62, 190, 62);
-
+  margin: 10px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
 }
 
 .container.errorMsg{
   background-color: rgb(222, 99, 99);
-
+  margin: 10px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
+}
+.container.prestito{
+  margin: 20px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
 }

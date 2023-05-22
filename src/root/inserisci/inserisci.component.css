@@ -2,18 +2,18 @@
   background-color: beige;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 10%;
+  padding: 3%;
   position: relative;
 }
 
 .container.successMsg{
   background-color: rgb(62, 190, 62);
-
+  margin: 10px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
 }
 
 .container.errorMsg{
   background-color: rgb(222, 99, 99);
-
+  margin: 10px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
 }
 
 .input-field {
@@ -50,9 +50,20 @@
 }
 
 .style_home_button.indietro{
-  float: right;
+  position: absolute;
+  bottom: 10px; /* Regola la distanza dal bordo inferiore del container */
+  right: 10px; /* Regola la distanza dal bordo destro del container */
+  margin-right: 60px; /* Aggiunge spazio verso destra rispetto ai margini del container */
+  
+
 }
 
+.style_home_button.submit {
+  position: absolute;
+  bottom: 10px; /* Regola la distanza dal bordo inferiore del container */
+  left: 10px; /* Regola la distanza dal bordo sinistro del container */
+  margin-left: 60px; /* Aggiunge spazio verso sinistra rispetto ai margini del container */
+}
 .style_home_button.submit:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -61,6 +72,7 @@
 .style_home_button.submit:enabled {
   background-color: rgb(110, 62, 20);
   color: beige;
+  
   /* Altri stili per il pulsante abilitato */
 }
 

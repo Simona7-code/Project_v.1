@@ -39,7 +39,7 @@ export class InserisciComponent {
       if (Object.prototype.hasOwnProperty.call(this.book, key)) {
         let cleanedString = this.book[key]
           .replace(/\s{2,}/g, ' ') // Rimuove gli spazi multipli consecutivi
-          .replace(/[^a-zA-Z0-9À-ÿ\s']/g, ''); // Rimuove caratteri non alfanumerici ma lascia caratteri accentati
+          .replace(/[^a-zA-Z0-9À-ÿ\s'.]/g, ''); // Rimuove caratteri non alfanumerici ma lascia caratteri accentati
         this.book[key] = cleanedString.trim(); // Rimuove spazi all'inizio e alla fine della stringa
       }
     }

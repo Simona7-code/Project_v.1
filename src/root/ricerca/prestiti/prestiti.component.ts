@@ -58,15 +58,18 @@ export class PrestitiComponent{
         next: () => {
           // Gestisci il successo della sovrascrittura
           this.successMessage = 'Rimozione dall\'archivio avvenuta con successo.';
+          this.InputPrestaBook=false;
         },
         error: () => {
           this.errorMessage = 'Errore durante la rimozione del libro. Riprovare.';
+          this.InputPrestaBook=false;
         }
       });
     
     }
     else{
       this.errorMessage = 'Questo libro è stato già rimosso, procedere ad una nuova ricerca.';
+      this.InputPrestaBook=false;
     }
   }
 

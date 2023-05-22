@@ -2,11 +2,12 @@
   background-color: beige;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 10%;
+  padding: 3%;
   position: relative;
 }
 .container.risultato{
   white-space: pre-line;
+  margin-bottom: 30px; /* Regola la distanza dal bordo superiore del contenitore */
 }
 
 .input-field {
@@ -29,13 +30,11 @@
   color: rgb(110, 62, 20);
   border-radius: 5px;
   border: rgb(110, 62, 20);
-  margin-top: 1%; /* Aggiunge spazio verso l'alto di 10px */
-  margin-bottom: 10%; /* Aggiunge spazio verso il basso di 10px */
+  margin-top: 1%; /* Aggiunge spazio verso l'alto di 10px */ 
 }
 .style_home_button:hover {
   background-color: rgb(110, 62, 20);
   color: beige;
-  margin-bottom: 10%;
 }
 
 .style_home_button:focus {
@@ -43,6 +42,11 @@
 }
 
 .style_home_button.indietro{
-  float: right;
+
+  position: absolute;
+  margin-top: 10px; /* Aggiunge una distanza sopra il bottone */
+  top: auto; /* Regola la distanza sopra il bottone */
+  bottom: 10px; /* Regola la distanza dal bordo superiore del contenitore */
+  right: 10px; /* Regola la distanza dal bordo destro del contenitore */
 }
 
