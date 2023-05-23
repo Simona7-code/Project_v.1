@@ -12,20 +12,16 @@ export class Archive {
   //metodo prende in input una stringa e cerca se è contenuta tra i titoli o gli autori
   cerca(titolo: string) {
 
-    //definisco libriTrovati come una lista di oggetti libro
-    let libriTrovati: Book[] = [];
-
-    //per ogni libro dell'archivio crea una stringa concatenando autore e titolo
-    for (let libro of this.archivio) {
+    // filtro i libri dell'archivio che corrispondono alla condizione
+    let libriTrovati = this.archivio.filter((libro) => {
+      //per ogni libro dell'archivio crea una stringa concatenando autore e titolo
       let titoloCorrente = libro.titolo;
       let autoreCorrente = libro.autore;
+      // se la stringa concatenata in versione lowercase include la stringa da ricercare l'oggetto libro corrente sarà restituito
       let bothCorrente = autoreCorrente.concat(" ", titoloCorrente);
-      //se la stringa concatenata in versione lowercase include la stringa da ricercare
-      if (bothCorrente.toLowerCase().includes(titolo.toLowerCase())) {
-        //inserisco il libro corrispondente nella lista libriTrovati
-        libriTrovati.push(libro);}
-    }
-    //restituisco la lista contenente i libri che matchano la ricerca
+      return bothCorrente.toLowerCase().includes(titolo.toLowerCase());
+    });
+    // restituisco la lista contenente i libri che matchano la ricerca
     return libriTrovati;
   }
   
