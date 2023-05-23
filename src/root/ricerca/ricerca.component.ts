@@ -23,9 +23,8 @@ export class RicercaComponent implements OnInit {
   //riferimento al componente figlio Prestiti che permette a componente ricerca di accedere a metodo resetValues di prestiti
   @ViewChild(PrestitiComponent) childComponent: PrestitiComponent;
 
+  //variabili prese in input e passate in output a root component 
   @Input() mostraRicerca: boolean;
-  //raccoglie in automatico l'evento che si trova in input htlm del proprio component
-  @Output() newInputEvent= new EventEmitter<string>();
   @Output() closeSearchEvent = new EventEmitter();
 
     
@@ -61,6 +60,7 @@ export class RicercaComponent implements OnInit {
     var input: HTMLInputElement = document.getElementById("input_ricerca") as HTMLInputElement;
     //newinput prende il valore del campo di input
     var newinput = input.value;
+    console.log("TEST input di ricerca :", newinput)
 
     //nel caso l'input venga svuotato
     if (!newinput) {
@@ -76,7 +76,7 @@ export class RicercaComponent implements OnInit {
         next: archivio => {
           //salvo dentro archivio l'archivio estratto dal db
           this.archivio = archivio;
-          console.log("TEST: archivio estratto dal database: ",this.archivio)
+          console.log("TEST archivio estratto dal database: ",this.archivio)
           //applico il metodo cerca su archivio
           const risultato = this.archivio.cerca(newinput);
          
@@ -123,6 +123,7 @@ export class RicercaComponent implements OnInit {
       });
     }
   }
+
 
   //metodo invocato da tasto indietro: riporta tutte le variabili necessarie ai valori originali
   clean() {
