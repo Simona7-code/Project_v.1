@@ -41,12 +41,11 @@
   outline: none;
 }
 
-.style_home_button.indietro{
 
+.style_home_button.indietro {
   position: absolute;
-  margin-top: 10px; /* Aggiunge una distanza sopra il bottone */
-  top: auto; /* Regola la distanza sopra il bottone */
-  bottom: 10px; /* Regola la distanza dal bordo superiore del contenitore */
-  right: 10px; /* Regola la distanza dal bordo destro del contenitore */
+  margin-top: 3%; /* Utilizza una percentuale per la distanza sopra il bottone */
+  top: auto;
+  bottom: 3%; /* Utilizza una percentuale per la distanza dal bordo superiore del contenitore */
+  right: 3%; /* Utilizza una percentuale per la distanza dal bordo destro del contenitore */
 }
-

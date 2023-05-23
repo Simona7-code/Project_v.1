@@ -48,22 +48,22 @@
 .style_home_button:focus {
   outline: none;
 }
-
-.style_home_button.indietro{
-  position: absolute;
-  bottom: 10px; /* Regola la distanza dal bordo inferiore del container */
-  right: 10px; /* Regola la distanza dal bordo destro del container */
-  margin-right: 60px; /* Aggiunge spazio verso destra rispetto ai margini del container */
-  
-
+.style_home_button.indietro {
+  position: relative;
+  bottom: 10px;
+  left: auto;
+  right: 10px;
+  margin-top: 1em; /* Utilizza l'unità "em" per la distanza verso l'alto */
 }
 
 .style_home_button.submit {
-  position: absolute;
-  bottom: 10px; /* Regola la distanza dal bordo inferiore del container */
-  left: 10px; /* Regola la distanza dal bordo sinistro del container */
-  margin-left: 60px; /* Aggiunge spazio verso sinistra rispetto ai margini del container */
+  position: relative;
+  bottom: 10px;
+  left: 10px;
+  right: auto;
+  margin-top: 1em; /* Utilizza l'unità "em" per la distanza verso l'alto */
 }
+
 .style_home_button.submit:disabled {
   opacity: 0.5;
   cursor: not-allowed;
