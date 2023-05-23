@@ -7,7 +7,7 @@ import { PrestitiComponent } from './ricerca/prestiti/prestiti.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
 //servizio
 import { FromReqBinService } from './call_server.service';
- 
+   
 
 @Component({ 
   selector: 'app-root',
@@ -17,7 +17,7 @@ import { FromReqBinService } from './call_server.service';
   providers: [FromReqBinService],
   standalone: true
 })
-       
+        
 export class RootComponent implements OnInit {
 
   //titolo del sito 
@@ -30,7 +30,7 @@ export class RootComponent implements OnInit {
   formRicerca() {
     this.mostraRicerca = true;
   }
-  //invocato dal pulsante per inserimento, imposta la variabile a true mostrando il contentuto per l'inserimento
+  //invocato dal pulsante per inserimento, imposta la variabile a true mostrando il contentuto per l'inserimento 
   formInserimento() {
     this.mostraInserimento = true;
   }

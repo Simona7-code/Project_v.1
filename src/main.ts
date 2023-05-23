@@ -3,4 +3,4 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { RootComponent } from './root/root.component'
 
 
-bootstrapApplication(RootComponent);
+bootstrapApplication(RootComponent);   
