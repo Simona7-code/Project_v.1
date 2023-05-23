@@ -59,7 +59,7 @@ export class RicercaComponent {
     //newname prende il valore del campo di input
     var newinput = input.value;
 
-    //nel caso l'input venga svuotato
+    //nel caso l'input venga svuotato oppure risultatoRicerca sia ancora una stinga vuota
     if (!newinput) {
       this.risultatoRicerca="In attesa di un input...";
     }
