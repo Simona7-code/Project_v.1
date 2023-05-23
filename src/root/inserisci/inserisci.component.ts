@@ -65,7 +65,7 @@ export class InserisciComponent implements OnInit {
         console.log("TEST Il libro è già contenuto nell'archivio?: ",contiene);
 
         let posizioneOccupata=this.archivio.stessaPosizione(this.book)
-        console.log("TEST Il libro ha la stessa posizione di un altro libro dell'archivio?: ",contiene);
+        console.log("TEST Il libro ha la stessa posizione di un altro libro dell'archivio?: ",posizioneOccupata);
   
         //se il libro non è contenuto nell'archivio e la posizione è libera lo aggiungo e aggiorno l'archivio sul server
         if (!contiene && !posizioneOccupata) {

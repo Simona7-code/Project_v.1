@@ -2,7 +2,7 @@
 <div *ngIf="One_result  && !Prestato">
   
   <!-- se i messaggi di successo e fallimento sono entrambi contemporaneamente undefined mostro i bottoni per cancellare o prendere in prestito-->
-  <button class="style_home_button" id="Prendi_prestito" *ngIf="successMessage === undefined && errorMessage === undefined" (click)="InputPresta()">Prendi in prestito</button>
+  <button class="style_home_button" id="Prendi_prestito" *ngIf="successMessage === undefined && errorMessage === undefined" (click)="InputPresta()">Inserisci prestito</button>
 
   <button class="style_home_button" id="cancella_libro" (click)="cancella_libro()" *ngIf="successMessage === undefined && errorMessage === undefined">
     Cancella libro dall'archivio

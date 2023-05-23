@@ -15,7 +15,7 @@ export class FromReqBinService {
   private apiKey: string = "bf109f8a";
   private apiUrl: string = "https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/";
 
-  constructor() {}
+  constructor() {} 
  
 
   //metodo per recuperare contenuto dal server: restituisce un observable di tipo oggetto archivio 

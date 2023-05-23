@@ -91,6 +91,7 @@ export class RicercaComponent implements OnInit {
             
             //salvo il libro in un oggetto che mi porterò nel component prestiti
             this.Book_found= risultato[0];
+            console.log("TEST unico libro corrispondente alla ricerca: ",this.Book_found)
             //setto a true la variabile che mi indicherà che il match è precisamente uno
             this.One_result=true;
             //salvo dentro libro_match la stringa che sarà poi assegnata a risultatoRicerca
