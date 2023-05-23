@@ -2,7 +2,7 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-tk7hbp)
 
-Link del deploy su Firebase: https://ssw-544298.firebaseapp.com/?804067
+Link del deploy su Firebase: https://ssw-544298.firebaseapp.com/?013630
 
 ########################################################################################################
 
