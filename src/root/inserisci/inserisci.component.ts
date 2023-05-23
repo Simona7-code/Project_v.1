@@ -102,16 +102,16 @@ export class InserisciComponent implements OnInit {
         //Se il libro non è contenuto in archivio ma la posizione è già occupata restituisco errore
         else if (posizioneOccupata){
           this.successMessage = null;
-            this.errorMessage = 'La posizione in cui stai cercando di aggiungere il libro è già occupata, cambiare la posizione';
+            this.errorMessage = 'La posizione in cui stai cercando di aggiungere il libro è già occupata, si prega di cambiare la posizione.';
         }
       },
 
-      //fallimento nell'observable del recupero archivio
+      //nel caso il recupero dell'archivio dal db non andasse a buon fine
       error: error => {
         // mostro in console l'errore
         console.error(error);
         // messaggio di errore
-        this.errorMessage = 'Inserimento non andato a buon fine causa errore nel recupero dell\'archivio nel database, si prega di riprovare.';
+        this.errorMessage = 'Inserimento non andato a buon fine causa errore nel recupero dell\'archivio dal database, si prega di riprovare.';
       } 
     }); 
   }

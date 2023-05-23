@@ -1,3 +1,4 @@
+//classe libro definita come un dizionario contenente 4 elementi
 export class Book {
   
   autore: string; 
