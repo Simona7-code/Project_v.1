@@ -18,9 +18,12 @@
       <input class="input-field" type="text" id="posizione" name="posizione" placeholder="campo obbligatorio*"  [(ngModel)]="book.posizione" required>
     </div>
   
-    <div>
+    <div class="button-container">
       <button class="style_home_button submit" type="submit" [disabled]="!myForm.form.valid">Invia</button>
+
+      <button class="style_home_button indietro" (click)="clean()">Indietro</button>
     </div>
+    
   </form>
 
   <!-- Messaggio di successo -->
@@ -33,5 +36,5 @@
     {{ errorMessage }}
   </div>
 
-  <button class="style_home_button indietro" (click)="clean()">Indietro</button>
+
 </div>

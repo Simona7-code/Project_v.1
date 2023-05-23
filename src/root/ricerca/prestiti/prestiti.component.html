@@ -11,7 +11,7 @@
   <div class="container prestito" *ngIf="InputPrestaBook">
     <label for="clienteInput">Inserisci nominativo cliente: </label>
     <input class="input-field" type="text" id="clienteInput" [(ngModel)]="clientInputValue">
-    <button class="style_home_button" (click)="Presta()">Invia</button>
+    <button class="style_home_button invia" (click)="Presta()">Invia</button>
   </div>
   
   <!-- se il messaggio di successo è diverso da undefined mostro il messaggio di successo-->

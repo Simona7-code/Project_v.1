@@ -27,6 +27,9 @@
   color: beige;
 
 }
+.style_home_button.invia{
+  margin-left: 10px;
+}
 
 .style_home_button:focus {
   outline: none;

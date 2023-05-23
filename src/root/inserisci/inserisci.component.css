@@ -48,32 +48,23 @@
 .style_home_button:focus {
   outline: none;
 }
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
 .style_home_button.indietro {
-  position: relative;
-  bottom: 10px;
-  left: auto;
-  right: 10px;
-  margin-top: 1em; /* Utilizza l'unità "em" per la distanza verso l'alto */
+  margin-right: 10px;
 }
 
 .style_home_button.submit {
-  position: relative;
-  bottom: 10px;
-  left: 10px;
-  right: auto;
-  margin-top: 1em; /* Utilizza l'unità "em" per la distanza verso l'alto */
+  margin-left: 10px;
 }
 
 .style_home_button.submit:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.style_home_button.submit:enabled {
-  background-color: rgb(110, 62, 20);
-  color: beige;
-  
-  /* Altri stili per il pulsante abilitato */
 }
 
 .input-container {

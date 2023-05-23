@@ -11,7 +11,7 @@
 }
 
 .input-field {
-  width: 200px;
+  width: 40vw;
   padding: 10px;
   border: none;
   border-radius: 10px;
@@ -41,11 +41,9 @@
   outline: none;
 }
 
-
 .style_home_button.indietro {
-  position: absolute;
-  margin-top: 3%; /* Utilizza una percentuale per la distanza sopra il bottone */
-  top: auto;
-  bottom: 3%; /* Utilizza una percentuale per la distanza dal bordo superiore del contenitore */
-  right: 3%; /* Utilizza una percentuale per la distanza dal bordo destro del contenitore */
+  margin-left: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
