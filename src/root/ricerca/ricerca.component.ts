@@ -1,62 +1,65 @@
 import { Component, Output, EventEmitter, Input, ViewChild, OnInit } from '@angular/core';
-import { FromReqBinService } from '../call_server.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Archive } from '../archive'
+//componente figlio 
 import { PrestitiComponent} from './prestiti/prestiti.component';
+//servizio
+import { FromReqBinService } from '../call_server.service';
+//classi
 import { Book } from '../book';
+import { Archive } from '../archive'
 
 
 @Component({
   selector: 'app-ricerca',
   templateUrl: './ricerca.component.html',
   styleUrls: ['./ricerca.component.css'],
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule, PrestitiComponent ],
+  imports: [ CommonModule, PrestitiComponent ],
   standalone: true
 })
 
+
 export class RicercaComponent implements OnInit {
 
+  //riferimento al componente figlio Prestiti che permette a componente ricerca di accedere a metodo resetValues di prestiti
   @ViewChild(PrestitiComponent) childComponent: PrestitiComponent;
 
   @Input() mostraRicerca: boolean;
-  
   //raccoglie in automatico l'evento che si trova in input htlm del proprio component
   @Output() newInputEvent= new EventEmitter<string>();
   @Output() closeSearchEvent = new EventEmitter();
 
-  
-  ngOnInit() {}
+    
+  //istanziazione del servizio FromReqBinService tramite il parametro servizio all'interno del costruttore del componente
   constructor(private servizio: FromReqBinService) {}
+
+  ngOnInit() {}
 
   // Dichiarazione della variabile archivio come oggetto di tipo archive
   archivio: Archive; 
   risultatoRicerca: string = '';
-  //variabili da passare a prestiti component
+  //Variabili da passare a prestiti component
   One_result: boolean = false;
   Prestato:boolean = true;
   Book_found: Book;
-  //per reimpostare i valori di successo e fallimento cancellazione a undefined, cosi ogni volta che viene invocata la search ritrorna pulito
   InputPrestaBook: boolean=false;
   InputRestituisciBook: boolean=true;
 
-  
+
+  //metodo search permette di ottenere l'archivio dal db ed effettuare una ricerca
   search() {
     
+    //resetto variabili di interesse nel child prestiti
     this.childComponent.resetValues();
+
     //risetto book_found ad undefined ad ogni nuova ricerca
     this.Book_found = undefined;
-    //per indicare se il contenuto dell'archivio risultante è un solo elemento
+    //boolean per indicare se il contenuto dell'archivio risultante contiene un solo elemento e condizioni prestito del libro 
     this.One_result= false;
-    //sempre prestato a meno che non entri nell'if dentro l else if per il caso di un solo libro
     this.Prestato= true;
-    //per non mostrare campo di prestito e restituzione se la volta precedente è stato aperto ma non chiusp
 
-
-
-    //input prende il contenuto preso dall input
+    //input assume il valore del contenuto preso in input
     var input: HTMLInputElement = document.getElementById("input_ricerca") as HTMLInputElement;
-    //newname prende il valore del campo di input
+    //newinput prende il valore del campo di input
     var newinput = input.value;
 
     //nel caso l'input venga svuotato
@@ -67,13 +70,13 @@ export class RicercaComponent implements OnInit {
     //se l'input è pieno:
     else {
 
-    
       //uso il metodo del servizio per ricavare l'archivio
       this.servizio.getArch().subscribe({
+        //nel caso l'observable vada a buon fine e ottenga l'archivio
         next: archivio => {
-          //salvo dentro archivio (var del componente dichiarata sopra come di tipo archive) l'archivio preso dal db
+          //salvo dentro archivio l'archivio estratto dal db
           this.archivio = archivio;
-          console.log(this.archivio)
+          console.log("TEST: archivio estratto dal database: ",this.archivio)
           //applico il metodo cerca su archivio
           const risultato = this.archivio.cerca(newinput);
          
@@ -92,46 +95,46 @@ export class RicercaComponent implements OnInit {
             this.One_result=true;
             //salvo dentro libro_match la stringa che sarà poi assegnata a risultatoRicerca
             let libro_match = risultato.map(item => {
-              // Verifica se il nominativo è una stringa vuota
+              // Verifica se il nominativo è una stringa vuota: assume valore stringa vuota nel caso affermativo, la stringa idonea alla presentazione altrimenti
               let nominativoString = item.nominativo !== '' ? `Nominativo: ${item.nominativo}` : '';
               //se nominativoString è una stringa vuota la variabile Prestato viene impostata a false (di default è true)
               if (nominativoString === '') {
                 this.Prestato = false;
               }
-              //console.log(this.Prestato)
+              //definisco contenuto finale di libro_match
               return `Autore: ${item.autore}\nTitolo: ${item.titolo}\nPosizione: ${item.posizione}\n${nominativoString}`;
             });
-            //uso la posizione 0 di libro_match perchè la stringa è salvata dentro una lista/array #TODO
+            //uso la posizione 0 di libro_match perchè la stringa è salvata dentro una lista
             this.risultatoRicerca = libro_match[0];
           }
 
-          //se più di un libro matcha la ricerca salvo dentro risultato ricerca la stringa che mostra il numero di match
+          //se più di un libro matcha la ricerca
           else if (risultato.length > 1) {
+            // salvo dentro risultato ricerca la stringa che mostra il numero di match
             this.risultatoRicerca= "Ci sono " + risultato.length + " corrispondenze all'interno dell'archivio";
           }
         },
         //nel caso il recupero dell'archivio dal db non andasse a buon fine
         error: error => {
           // mostro in console l' errore #CHIEDI SE VA BENE 
-          console.error('Errore durante la richiesta:', error);
-          this.risultatoRicerca= 'Errore durante la richiesta, si prega di riprovare.';
+          console.error('Errore durante la richiesta dell\'archivio dal database:', error);
+          this.risultatoRicerca= 'Errore durante la ricerca, si prega di riprovare.';
         }
       });
     }
   }
 
-  //Funzione legata al tasto indietro: quando spinto riporta tutte le variabili booleane ai valori originali
+  //metodo invocato da tasto indietro: riporta tutte le variabili necessarie ai valori originali
   clean() {
-    //non serve cambiare la condizione di prestato perchè la condizione dell ngif prevede sempre one_result=true, quindi basta impostarla a false per non mostrare i bottoni; inoltre ad ogni nuova ricerca Prestato diventa true.
-    //one_result serve reimpostarlo a false perchè se si trova un libro non in prestito e si spinge chiudi per poi riaprire la ricerca, restano i bottoni.
+    //one_result viene reimpostato a false perchè altrimenti se si trovasse un libro non in prestito e si spingesse chiudi per poi riaprire la ricerca, resterebbero i bottoni.
     this.One_result = false;
     this.Book_found = undefined;
-    //per nascondere tutto il blocco ricerca
-    this.mostraRicerca = false;
     //risetto risultato ricerca a stringa vuota
     this.risultatoRicerca = '';
+    //risetto Presta e restituisci ai valori originali
     this.InputPrestaBook= false;
     this.InputRestituisciBook =true;
+    //emette l'evento che invoca il metodo closeSearch di root: imposta mostraRicerca=false nascondendo tutto il blocco ricerca
     this.closeSearchEvent.emit();
   }
 

@@ -23,8 +23,9 @@ export class InserisciComponent implements OnInit {
   @Output() inserimentoEseguito: EventEmitter<void> = new EventEmitter<void>();
   @Output() closeInserisciEvent = new EventEmitter();
    
-  ngOnInit() {}
   constructor(private servizio: FromReqBinService) {}
+  ngOnInit() {}
+  
 
   archivio: Archive; // Dichiarazione della variabile archivio
   book: Book = new Book('', '', '', '');
