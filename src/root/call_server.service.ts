@@ -14,7 +14,7 @@ export class FromReqBinService {
   private apiUrl: string = "https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/";
 
   constructor() {}
-
+ 
   public getArch(): Observable<Archive> {
 
     return ajax({

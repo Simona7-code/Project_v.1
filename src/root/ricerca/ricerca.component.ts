@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ViewChild, OnInit } from '@angular/core';
 import { FromReqBinService } from '../call_server.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { Book } from '../book';
   standalone: true
 })
 
-export class RicercaComponent {
+export class RicercaComponent implements OnInit {
 
   @ViewChild(PrestitiComponent) childComponent: PrestitiComponent;
 
@@ -59,7 +59,7 @@ export class RicercaComponent {
     //newname prende il valore del campo di input
     var newinput = input.value;
 
-    //nel caso l'input venga svuotato oppure risultatoRicerca sia ancora una stinga vuota
+    //nel caso l'input venga svuotato
     if (!newinput) {
       this.risultatoRicerca="In attesa di un input...";
     }

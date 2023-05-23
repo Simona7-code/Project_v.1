@@ -1,8 +1,9 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { FromReqBinService } from '../call_server.service';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgIf } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+//servizio
+import { FromReqBinService } from '../call_server.service';
+//classi
 import { Archive } from '../archive'
 import { Book } from '../book';
 
@@ -11,12 +12,12 @@ import { Book } from '../book';
   selector: 'app-inserisci',
   templateUrl: './inserisci.component.html',
   styleUrls: ['./inserisci.component.css'],
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule, NgIf ],
+  imports: [ CommonModule, FormsModule],
   standalone: true
 })
 
 
-export class InserisciComponent {
+export class InserisciComponent implements OnInit {
 
   @Input() mostraInserimento: boolean;
   @Output() inserimentoEseguito: EventEmitter<void> = new EventEmitter<void>();

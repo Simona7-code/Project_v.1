@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, OnInit } from '@angular/core';
 import { FromReqBinService } from '../../call_server.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,10 +9,10 @@ import { Book } from '../../book';
   selector: 'app-prestiti',
   templateUrl: './prestiti.component.html',
   styleUrls: ['./prestiti.component.css'],
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule ],
+  imports: [ CommonModule, FormsModule, ReactiveFormsModule ], 
   standalone: true
 })
-export class PrestitiComponent{
+export class PrestitiComponent implements OnInit{
 
   @Input() Prestato: boolean;
   @Input() One_result: boolean;

@@ -1,8 +1,10 @@
+/* Definisco style titolo */
 h3{
   color: rgb(110, 62, 20);
   font-size: 25px;
 }
 
+/* Definisco style container */
 .container {
   background-color: rgb(236, 226, 218);
   border: 1px solid #ccc;
@@ -10,30 +12,25 @@ h3{
   padding: 20px;
 }
 
+/* Definisco style dei due bottoni in home */
 .Home_button {
-  margin-top: 10px; /* Aggiunge spazio verso l'alto di 10px */
+  margin-top: 10px; 
   padding: 10px 20px;
   background-color: beige;
   color: rgb(110, 62, 20);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-right: 120px; /* Aggiunto margine destro per aumentare lo spazio tra i bottoni */
+  margin-right: 120px; 
 }
 
-.Home_button {
-  margin-right: 120; /* Rimuove il margine destro sull'ultimo bottone per evitare spazi inutili */
-}
-
+/* Definisco style dei due bottoni in home al passaggio del cursore*/
 .Home_button:hover {
   background-color: rgb(110, 62, 20);
   color: beige;
 }
 
-.Home_button:focus {
-  outline: none;
-}
-
+ /*come visualizzare i bottoni nel caso di riduzione dimensioni*/
 @media (max-width: 768px) {
   .Home_button{
     width: 100%;
