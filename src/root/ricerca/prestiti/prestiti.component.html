@@ -8,25 +8,26 @@
     Cancella libro dall'archivio
   </button>
 
+  
+   <!-- se il valore di InputPrestaBook è true (quindi è stato spinto il bottone "Prendi_prestito") mostro il container associato per permettere il prestito-->
   <div class="container prestito" *ngIf="InputPrestaBook">
     <label for="clienteInput">Inserisci nominativo cliente: </label>
     <input class="input-field" type="text" id="clienteInput" [(ngModel)]="clientInputValue">
     <button class="style_home_button invia" (click)="Presta()">Invia</button>
   </div>
   
-  <!-- se il messaggio di successo è diverso da undefined mostro il messaggio di successo-->
-
+  <!-- se il messaggio di successo (che sia di presta o cancella) è diverso da undefined mostro il messaggio di successo-->
   <div *ngIf="successMessage !== undefined " class="container successMsg">
     {{ successMessage }}
   </div>
   
-   <!-- se il messaggio di errore è diverso da undefined mostro il messaggio di errore-->
-
+   <!-- se il messaggio di errore  (che sia di presta o cancella) è diverso da undefined mostro il messaggio di errore-->
   <div *ngIf="errorMessage !== undefined " class="container errorMsg">
     {{ errorMessage }}
   </div>
 
 </div>
+
 
  <!-- se la ricerca ha prodotto un solo match e quel libro è in prestito mostro il bottone per restituirlo-->
 <div *ngIf="One_result && Prestato">
@@ -34,14 +35,12 @@
   <button  *ngIf="InputRestituisciBook" class="style_home_button" id="lascia_prestito"  (click)="Restituisci()">Restituisci il libro</button>
 
     <!-- se il messaggio di successo è diverso da undefined mostro il messaggio di successo-->
-
     <div *ngIf="successMessage !== undefined " class="container successMsg">
       {{ successMessage }}
     </div>
     
      <!-- se il messaggio di errore è diverso da undefined mostro il messaggio di errore-->
-  
-    <div *ngIf="errorMessage !== undefined " class="container errorMsg">
+      <div *ngIf="errorMessage !== undefined " class="container errorMsg">
       {{ errorMessage }}
     </div>
 

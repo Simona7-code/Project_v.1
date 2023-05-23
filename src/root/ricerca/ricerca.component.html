@@ -4,9 +4,9 @@
 
   <input type="text" id="input_ricerca" (input)="search()" placeholder="Inserisci titolo o autore" class=input-field> 
 
-  <div id="risultato" class="container risultato">{{ risultatoRicerca }} </div>
+  <div id="risultato" class="container risultato">{{ risultatoRicerca }}</div>
   
-  <!--Passo al component figlio (prestiti) queste variabili-->
+  <!--Passo al component figlio (prestiti) delle variabili in input-->
   <app-prestiti [One_result]="One_result" [Prestato]="Prestato" [Book_found]="Book_found" [archivio]="archivio" [InputPrestaBook]="InputPrestaBook" ></app-prestiti>
   
   <button class="style_home_button indietro" (click)="clean()">Indietro</button>

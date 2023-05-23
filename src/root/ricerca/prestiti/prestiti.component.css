@@ -1,3 +1,4 @@
+/* Definisco style container dei contenuti di prestiti */
 .container {
   background-color: beige;
   border: 1px solid #ccc;
@@ -5,6 +6,8 @@
   padding: 3%;
   position: relative;
 }
+
+/* Definisco style del campo di input del prestito */
 .input-field {
   width: 70%;
   padding: 10px;
@@ -14,36 +17,41 @@
   margin-bottom: 20px;
 }
 
+/* Definisco style dei bottoni generici */
 .style_home_button {
   padding: 10px 20px;
   background-color: rgb(236, 226, 218);
   color: rgb(110, 62, 20);
   border-radius: 5px;
   border: rgb(110, 62, 20);
-  margin-right: 70px; /* Aggiunge margine a destra del bottone */
+  margin-right: 70px; 
 }
+
+/* Definisco style dei bottoni al passaggio del cursore */
 .style_home_button:hover {
   background-color: rgb(110, 62, 20);
   color: beige;
 
 }
+
+/* Definisco style del bottone invia (sottoclasse del bottone generico) */
 .style_home_button.invia{
   margin-left: 10px;
 }
 
-.style_home_button:focus {
-  outline: none;
-}
-
+/* Definisco style sottoclasse di container che contiene il messaggio di successo */
 .container.successMsg{
   background-color: rgb(62, 190, 62);
-  margin: 10px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
+  margin: 10px 0; 
 }
 
+/* Definisco style sottoclasse di container che contiene il messaggio di fallimento */
 .container.errorMsg{
   background-color: rgb(222, 99, 99);
-  margin: 10px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
+  margin: 10px 0; 
 }
+
+/* Definisco style sottoclasse di container che contiene l'input e bottone per il prestito */
 .container.prestito{
-  margin: 20px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
+  margin: 20px 0; 
 }

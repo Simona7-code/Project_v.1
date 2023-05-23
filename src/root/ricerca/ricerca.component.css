@@ -1,3 +1,4 @@
+/* Definisco style container dei contenuti di ricerca */
 .container {
   background-color: beige;
   border: 1px solid #ccc;
@@ -5,11 +6,14 @@
   padding: 3%;
   position: relative;
 }
+
+/* Definisco style sottoclasse di container che contiene il risultato della ricerca */
 .container.risultato{
   white-space: pre-line;
-  margin-bottom: 30px; /* Regola la distanza dal bordo superiore del contenitore */
+  margin-bottom: 30px;
 }
 
+/* Definisco style del campo di input della ricerca */
 .input-field {
   width: 40vw;
   padding: 10px;
@@ -19,28 +23,23 @@
   margin-bottom: 15px;
 }
 
-.input-field:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
+/* Definisco style dei bottoni generici */
 .style_home_button {
   padding: 10px 20px;
   background-color: rgb(236, 226, 218);
   color: rgb(110, 62, 20);
   border-radius: 5px;
   border: rgb(110, 62, 20);
-  margin-top: 1%; /* Aggiunge spazio verso l'alto di 10px */ 
+  margin-top: 1%;
 }
+
+/* Definisco style dei bottoni al passaggio del cursore */
 .style_home_button:hover {
   background-color: rgb(110, 62, 20);
   color: beige;
 }
 
-.style_home_button:focus {
-  outline: none;
-}
-
+/* Definisco style del bottone per tornare indietro (sottoclasse del bottone generico) */
 .style_home_button.indietro {
   margin-left: auto;
   margin-top: 20px;

@@ -2,26 +2,32 @@
 
   <p> Inserisci i dati del nuovo testo:</p>
 
+  <!--chiamata alla funzione formInserimento() quando sottoposto il modulo HTML attraverso la direttiva ngSubmit-->
   <form (ngSubmit)="formInserimento()" #myForm="ngForm">
+
     <div class="input-container">
       <label for="titolo">Titolo:</label>
+      <!--ngModel è utilizzato per collegare il valore dell'input del campo di testo all'attributo titolo della variabile book nel componente inserisci, a cui viene passato tramite submit. Lo stesso accade per gli input he seguono-->
       <input class="input-field" type="text" id="titolo" name="titolo" placeholder="campo obbligatorio*" [(ngModel)]="book.titolo" required>
     </div>
   
     <div class="input-container">
       <label for="autore">Autore:</label>
-      <input class="input-field" type="text" id="autore" name="autore" placeholder="campo obbligatorio*"  [(ngModel)]="book.autore" required>
+      <input class="input-field" type="text" id="autore" name="autore" placeholder="campo obbligatorio*" [(ngModel)]="book.autore" required>
     </div>
   
     <div class="input-container">
       <label for="posizione">Posizione:</label>
-      <input class="input-field" type="text" id="posizione" name="posizione" placeholder="campo obbligatorio*"  [(ngModel)]="book.posizione" required>
+      <input class="input-field" type="text" id="posizione" name="posizione" placeholder="campo obbligatorio*" [(ngModel)]="book.posizione" required>
     </div>
   
     <div class="button-container">
+
+      <!--tasto di submit del form che tramite #myForm di form permette il submit; è disabilitato finchè tutti gli input con required non sono riempiti-->
       <button class="style_home_button submit" type="submit" [disabled]="!myForm.form.valid">Invia</button>
 
       <button class="style_home_button indietro" (click)="clean()">Indietro</button>
+
     </div>
     
   </form>

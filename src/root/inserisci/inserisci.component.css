@@ -1,3 +1,4 @@
+/* Definisco style container dei contenuti di inserisci */
 .container {
   background-color: beige;
   border: 1px solid #ccc;
@@ -6,16 +7,19 @@
   position: relative;
 }
 
+/* Definisco style sottoclasse di container che contiene il messaggio di successo */
 .container.successMsg{
   background-color: rgb(62, 190, 62);
-  margin: 10px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
+  margin: 10px 0; 
 }
 
+/* Definisco style sottoclasse di container che contiene il messaggio di fallimento */
 .container.errorMsg{
   background-color: rgb(222, 99, 99);
-  margin: 10px 0; /* Aggiunge spazio di 10px sopra e sotto il container */
+  margin: 10px 0; 
 }
 
+/* Definisco style dei campi di input */
 .input-field {
   width: 70%;
   padding: 10px;
@@ -25,11 +29,7 @@
   margin-bottom: 20px;
 }
 
-.style_bottoni {
-  margin-right: 10px;
-  margin-bottom: 20px;
-}
-
+/* Definisco style dei bottoni */
 .style_home_button {
   padding: 10px 20px;
   background-color: rgb(236, 226, 218);
@@ -40,43 +40,48 @@
 
 }
 
+/* Definisco style dei bottoni al passaggio del cursore */
 .style_home_button:hover {
   background-color: rgb(110, 62, 20);
   color: beige;
 }
 
-.style_home_button:focus {
-  outline: none;
-}
+/* Definisco style del div che contiene i bottoni indietro e submit */
 .button-container {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
+/* Definisco style del bottone indietro */
 .style_home_button.indietro {
   margin-right: 10px;
 }
 
+/* Definisco style del bottone submit */
 .style_home_button.submit {
   margin-left: 10px;
 }
 
+/* Definisco style del bottone submit quando disabilitato */
 .style_home_button.submit:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
+/* Definisco style dei singoli campi input */
 .input-container {
   display: flex;
   align-items: center;
 }
 
+/* Definisco style delle label dei campi input */
 .input-container label {
-  width: 100px; /* Larghezza desiderata per le etichette */
+  width: 100px;
 }
 
+/* Definisco style degli input dei campi input */
 .input-container input {
-  flex: 1; /* Occupa lo spazio rimanente */
-  margin-left: 10px; /* Margine sinistro tra l'etichetta e l'input */
+  flex: 1; 
+  margin-left: 10px; 
 }
