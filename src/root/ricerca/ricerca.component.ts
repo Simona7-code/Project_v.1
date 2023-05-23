@@ -13,10 +13,10 @@ import { Archive } from '../archive'
   selector: 'app-ricerca',
   templateUrl: './ricerca.component.html',
   styleUrls: ['./ricerca.component.css'],
-  imports: [ CommonModule, PrestitiComponent ],
+  imports: [ CommonModule, PrestitiComponent ], 
   standalone: true
 })
-
+ 
 
 export class RicercaComponent implements OnInit {
 
@@ -116,8 +116,9 @@ export class RicercaComponent implements OnInit {
         },
         //nel caso il recupero dell'archivio dal db non andasse a buon fine
         error: error => {
-          // mostro in console l' errore #CHIEDI SE VA BENE 
-          console.error('Errore durante la richiesta dell\'archivio dal database:', error);
+          // mostro in console l'errore 
+          console.error(error);
+          // mostro errore nel contenitore risultato
           this.risultatoRicerca= 'Errore durante la ricerca, si prega di riprovare.';
         }
       });

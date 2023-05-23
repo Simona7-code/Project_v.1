@@ -26,7 +26,7 @@ export class FromReqBinService {
       map(response => new Archive(JSON.parse((response as any).response))),
       catchError(error => {
         // Gestione dell'errore
-        console.error('Errore durante la richiesta:', error);
+        console.error('Errore durante recupero archivio dal database, si prega di riprovare:', error);
         return throwError(() => error);
       })
     );
@@ -47,9 +47,9 @@ export class FromReqBinService {
         'Content-Type': 'application/json'
       }
     }).pipe(
-      map(() => 'Sovrascrittura avvenuta con successo'),
+      map(() => 'Sovrascrittura dell\'archivio nel database avvenuta con successo'),
       catchError((error: AjaxError) => {
-        return throwError(() => new Error('Errore durante la sovrascrittura dei dati: ' + error.message));
+        return throwError(() => new Error('Errore durante il caricamento dell\' archivio nel database, si prega di riprovare. Dettagli: ' + error.message));
       })
     );
   }

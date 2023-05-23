@@ -26,26 +26,30 @@ export class RootComponent implements OnInit {
   mostraRicerca: boolean = false;
   mostraInserimento: boolean= false;
 
-  //invocato dal pulsante per ricerca, imposta la variabile a true mostrando il contentuto per la ricerca
+  constructor(){}
+  ngOnInit() {}
+
+
+  //metodo invocato dal pulsante per ricerca, imposta la variabile a true mostrando il contentuto per la ricerca
   formRicerca() {
     this.mostraRicerca = true;
   }
-  //invocato dal pulsante per inserimento, imposta la variabile a true mostrando il contentuto per l'inserimento 
+
+
+  //metodo invocato dal pulsante per inserimento, imposta la variabile a true mostrando il contentuto per l'inserimento 
   formInserimento() {
     this.mostraInserimento = true;
   }
- //invocato dal pulsante per ricerca, imposta la variabile a false nascondendo il contentuto per la ricerca
+
+
+  //metodo invocato dal pulsante per ricerca, imposta la variabile a false nascondendo il contentuto per la ricerca
   closeSearch() {
     this.mostraRicerca = false;
   }
 
-  //invocato dal pulsante per inserimento, imposta la variabile a false nascondendo il contentuto per l'inserimento
+  //metodo invocato dal pulsante per inserimento, imposta la variabile a false nascondendo il contentuto per l'inserimento
   closeInserisci() {
     this.mostraInserimento = false;
   }
-
-  constructor(){}
-  ngOnInit() {}
-
 }
 
