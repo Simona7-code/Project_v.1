@@ -30,6 +30,7 @@ export class InserisciComponent implements OnInit {
   
   // Dichiarazione variabili
   archivio: Archive; 
+  //valori di book di riempiono al submit del form
   book: Book = new Book('', '', '', '');
   successMessage: string;
   errorMessage: string;
@@ -38,18 +39,11 @@ export class InserisciComponent implements OnInit {
   //metodo per inserire nuovo libro nell'archivio (ricarica archivio con nuovo libro)
   formInserimento() {
 
-    // itera sulle chiavi di this.book (valori ottenuti tramite ngForm e definizioni ngModel dei campi input) 
-    for (const key in this.book) {
-      // condizione verifica se la chiave è una proprietà diretta di this.book
-      if (Object.prototype.hasOwnProperty.call(this.book, key)) {
-        // in cleanedString rimuovo da stringhe input caratteri non desiderati e spazi multipli 
-        let cleanedString = this.book[key]
-          .replace(/\s{2,}/g, ' ') 
-          .replace(/[^a-zA-Z0-9À-ÿ\s'.]/g, ''); 
-        // riassegna alle key di book le rispettive stringhe pulite e rimuove spazi da inizio e fine stringa ove presenti
-        this.book[key] = cleanedString.trim();
-      }
-    }
+    // rimuovo da stringhe input caratteri non desiderati, spazi multipli e spazi a inizio e fine stringa
+    this.book.autore = this.book.autore.replace(/\s{2,}|[^a-zA-Z0-9À-ÿ\s'.]/g, ' ').trim();
+    this.book.titolo = this.book.titolo.replace(/\s{2,}|[^a-zA-Z0-9À-ÿ\s'.]/g, ' ').trim();
+    this.book.posizione = this.book.posizione.replace(/\s{2,}|[^a-zA-Z0-9À-ÿ\s'.]/g, ' ').trim();
+ 
     console.log("TEST libro con stringhe pulite: ", this.book);
   
     // recupero archivio tramite servizio
@@ -88,7 +82,7 @@ export class InserisciComponent implements OnInit {
               
               // messaggio errore nella sovrascrittura
               this.successMessage = null;
-              this.errorMessage = 'Errore durante inserimento del nuovo libro,riprovare';
+              this.errorMessage = 'Errore durante inserimento del nuovo libro, riprovare';
             }
           });
         }
@@ -97,12 +91,14 @@ export class InserisciComponent implements OnInit {
         else if (contiene){
             this.successMessage = null;
             this.errorMessage = 'Il libro che stai cercando di inserire è già presente nell\'archivio.';
+            console.log("TEST ",  this.errorMessage);
         }
 
         //Se il libro non è contenuto in archivio ma la posizione è già occupata restituisco errore
         else if (posizioneOccupata){
           this.successMessage = null;
             this.errorMessage = 'La posizione in cui stai cercando di aggiungere il libro è già occupata, si prega di cambiare la posizione.';
+            console.log("TEST ",  this.errorMessage);
         }
       },
 

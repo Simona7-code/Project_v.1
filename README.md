@@ -41,3 +41,7 @@ A quel punto viene controllato se il libro che si vuole inseire è già presente
 
 
 In entrambe le sezioni è disponibile un tasto indietro per ritornare alla home, quindi alla visualizzazione dei due bottoni per accedere alle due sezioni.
+
+########################################################################################################
+
+Sono inoltre stati implementati dei TEST che verificano il corretto funzionamento delle funzionalità dell'archivio. I test sono implementati tramite console.log e sono visionabili nella console.
