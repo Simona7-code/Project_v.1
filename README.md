@@ -1,4 +1,4 @@
-# https-github.com-Simona7-code-Project
+# Progetto per il corso di Sviluppo dei Servizi Web 2022/23
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-tk7hbp)
 
