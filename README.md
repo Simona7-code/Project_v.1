@@ -7,6 +7,7 @@ Link del deploy su Firebase: https://ssw-544298.firebaseapp.com/?613718
 ########################################################################################################
 
 -----------------------------     IMPORTANTE    --------------------------------------------------------
+
 Il progetto soggetto a valutazione e completo si trova nel ramo main. 
 Gli altri rami mostrano alcuni dei checkpoint raggiunti durante lo sviluppo del progetto.
 
