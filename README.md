@@ -16,17 +16,19 @@ The application is divided into two main sections:
 1. In the search section, users can search for books in the archive. The search is conducted based on book titles and author names. For each new input entered in the search field, a new search is performed. A search can yield three possible results:
    - No results found.   
    - If multiple results are found, the number of books found is displayed.   
-   - If only one result is found, the book details are displayed. In this case:   
-         - If a borrower's name is associated with the book, a "Return Book" button is shown, which removes the borrower's name and makes the book available for new loans. A success or failure message is displayed accordingly.   
-         - If no borrower's name is associated with the book, users have the following options:   
-                - Delete the book from the archive: If successful, a positive outcome message is displayed; otherwise, a negative one.   
-                - Borrow the book: If users decide to borrow the book, an input field is shown to enter the borrower's name. A success or failure message is displayed accordingly.   
+   - If only one result is found, the book details are displayed. In this case:
+        
+     - If a borrower's name is associated with the book, a "Return Book" button is shown, which removes the borrower's name and makes the book available for new loans. A success or failure message is displayed accordingly.   
+      - If no borrower's name is associated with the book, users have the following options:
+        
+        - Delete the book from the archive: If successful, a positive outcome message is displayed; otherwise, a negative one.   
+        - Borrow the book: If users decide to borrow the book, an input field is shown to enter the borrower's name. A success or failure message is displayed accordingly.   
 
 2. In the insertion section, there are three input fields for the book title, author, and location. The submit button remains disabled until all input fields are filled. When the submit button is pressed, an internal check is performed:
    - First, the inputs are cleaned, retaining only alphanumeric characters, periods, and apostrophes. Leading and trailing spaces and any sequence of multiple space characters are also removed.
-   - Then, a check is made to see if the book to be inserted already exists in the archive. This check is case-insensitive and is based on the title and author:
+   - Then, a check is made to see if the book to be inserted already exists in the archive. This check is case-insensitive and is based on the title and author:   
      - If this check fails, an error message is displayed, and the insertion does not occur.
-      - If this check is successful, an additional check is made on the location:
+      - If this check is successful, an additional check is made on the location:   
          - If the input location is already occupied, the insertion does not occur, and an error message is displayed.
          - If both checks pass, the book is added to the archive, and the archive is loaded onto the server. If the loading is successful, a message indicating the correct insertion is shown; otherwise, an error message is displayed.
 
