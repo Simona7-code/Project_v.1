@@ -41,7 +41,7 @@ In both sections, a back button is available to return to the home, where the tw
 
 Additionally, tests have been implemented to verify the proper functioning of the archive's features. The tests are implemented through console.log and can be viewed in the console.    
 
-############################################################################################################ 
+###########################################################################################################
 
 **IMPORTANTE:     
 Il progetto soggetto a valutazione e completo si trova nel ramo main.     
