@@ -2,9 +2,9 @@
 
 Link to Firebase deploy: https://ssw-544298.firebaseapp.com/?613718        
 
-**IMPORTANT:
-The complete project subject to evaluation is located in the main branch.
-The other branches show some of the checkpoints reached during the project development.**
+**IMPORTANT:   
+The complete project subject to evaluation is located in the main branch.   
+The other branches show some of the checkpoints reached during the project development.**   
 
 This application serves as a library manager for facility's employees use-only.
 The application allows users to perform searches in the archive, add and remove books, and borrow and return books.
