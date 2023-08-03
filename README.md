@@ -21,7 +21,8 @@ The application is divided into two main sections:
      - If a borrower's name is associated with the book, a "Return Book" button is shown, which removes the borrower's name and makes the book available for new loans. A success or failure message is displayed accordingly.   
       - If no borrower's name is associated with the book, users have the following options:
         
-        - Delete the book from the archive: If successful, a positive outcome message is displayed; otherwise, a negative one.   
+        - Delete the book from the archive: If successful, a positive outcome message is displayed; otherwise, a negative one.
+          
         - Borrow the book: If users decide to borrow the book, an input field is shown to enter the borrower's name. A success or failure message is displayed accordingly.   
 
 2. In the insertion section, there are three input fields for the book title, author, and location. The submit button remains disabled until all input fields are filled. When the submit button is pressed, an internal check is performed:
@@ -32,7 +33,8 @@ The application is divided into two main sections:
      - If this check fails, an error message is displayed, and the insertion does not occur.   
       - If this check is successful, an additional check is made on the location:
         
-         - If the input location is already occupied, the insertion does not occur, and an error message is displayed.   
+         - If the input location is already occupied, the insertion does not occur, and an error message is displayed.
+           
          - If both checks pass, the book is added to the archive, and the archive is loaded onto the server. If the loading is successful, a message indicating the correct insertion is shown; otherwise, an error message is displayed.
 
 In both sections, a back button is available to return to the home, where the two buttons to access the two sections are displayed.
