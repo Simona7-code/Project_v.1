@@ -12,9 +12,7 @@ Questa applicazione si propone come un gestore di biblioteche ad uso degli impie
 
 Questa applicazione permette di effettuare ricerche nell'archivio, inserire e rimuovere libri, dare in prestito e restituire libri. 
 
-Un libro è un oggetto implementato come un dizionario di 4 elementi: titolo, autore, posizione e nominativo. L'archivio invece è implementato come una lista di oggetti libro.
-
-########################################################################################################
+Un libro è un oggetto implementato come un dizionario di 4 elementi: titolo, autore, posizione e nominativo. L'archivio invece è implementato come una lista di oggetti libro.        
 
 L'applicazione si divide in due macrosezioni:
 
