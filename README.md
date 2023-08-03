@@ -2,24 +2,20 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-tk7hbp)
 
-Link del deploy su Firebase: https://ssw-544298.firebaseapp.com/?613718
-
-########################################################################################################
+Link del deploy su Firebase: https://ssw-544298.firebaseapp.com/?613718    
 
 -----------------------------     IMPORTANTE    --------------------------------------------------------
 
 Il progetto soggetto a valutazione e completo si trova nel ramo main. 
 Gli altri rami mostrano alcuni dei checkpoint raggiunti durante lo sviluppo del progetto.
 
-########################################################################################################
+--------------------------------------------------------------------------------------------------------    
 
 Questa applicazione si propone come un gestore di biblioteche ad uso degli impiegati della struttura.
 
 Questa applicazione permette di effettuare ricerche nell'archivio, inserire e rimuovere libri, dare in prestito e restituire libri. 
 
-Un libro è un oggetto implementato come un dizionario di 4 elementi: titolo, autore, posizione e nominativo. L'archivio invece è implementato come una lista di oggetti libro.
-
-########################################################################################################
+Un libro è un oggetto implementato come un dizionario di 4 elementi: titolo, autore, posizione e nominativo. L'archivio invece è implementato come una lista di oggetti libro.    
 
 L'applicazione si divide in due macrosezioni:
 
