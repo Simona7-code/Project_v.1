@@ -25,18 +25,21 @@ The application is divided into two main sections:
         - Borrow the book: If users decide to borrow the book, an input field is shown to enter the borrower's name. A success or failure message is displayed accordingly.   
 
 2. In the insertion section, there are three input fields for the book title, author, and location. The submit button remains disabled until all input fields are filled. When the submit button is pressed, an internal check is performed:
-   - First, the inputs are cleaned, retaining only alphanumeric characters, periods, and apostrophes. Leading and trailing spaces and any sequence of multiple space characters are also removed.
-   - Then, a check is made to see if the book to be inserted already exists in the archive. This check is case-insensitive and is based on the title and author:   
-     - If this check fails, an error message is displayed, and the insertion does not occur.
-      - If this check is successful, an additional check is made on the location:   
-         - If the input location is already occupied, the insertion does not occur, and an error message is displayed.
+   
+   - First, the inputs are cleaned, retaining only alphanumeric characters, periods, and apostrophes. Leading and trailing spaces and any sequence of multiple space characters are also removed.   
+   - Then, a check is made to see if the book to be inserted already exists in the archive. This check is case-insensitive and is based on the title and author:
+       
+     - If this check fails, an error message is displayed, and the insertion does not occur.   
+      - If this check is successful, an additional check is made on the location:
+        
+         - If the input location is already occupied, the insertion does not occur, and an error message is displayed.   
          - If both checks pass, the book is added to the archive, and the archive is loaded onto the server. If the loading is successful, a message indicating the correct insertion is shown; otherwise, an error message is displayed.
 
 In both sections, a back button is available to return to the home, where the two buttons to access the two sections are displayed.
 
-Additionally, TESTS have been implemented to verify the proper functioning of the archive's features. The tests are implemented through console.log and can be viewed in the console.    
+Additionally, tests have been implemented to verify the proper functioning of the archive's features. The tests are implemented through console.log and can be viewed in the console.    
 
-################################################################################################################################    
+############################################################################################################ 
 
 **IMPORTANTE:     
 Il progetto soggetto a valutazione e completo si trova nel ramo main.     
